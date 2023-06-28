@@ -1,7 +1,7 @@
 exports.up = (knex) => {
   return knex.schema.createTable('questions', (table) => {
     table.increments('id').primary()
-    table.integer('participantId')
+    table.integer('participantsId')
     table.string('question')
     table.string('answer')
   })
