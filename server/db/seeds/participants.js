@@ -25,7 +25,7 @@ exports.seed = async function (knex) {
     {
       id: 3,
       name: 'Martin',
-      audioURL: '',
+      audioURL: '/audio/martin.m4a',
       question: 'If animals could talk, which one would be the rudest?',
       answer: 'Cat',
     },
@@ -41,7 +41,7 @@ exports.seed = async function (knex) {
     {
       id: 5,
       name: 'Renee',
-      audioURL: '',
+      audioURL: '/audio/renee.m4a',
       question: "What is the weirdest dream you've ever had?",
       answer: "All my dreams are weird! Don't make me choose just one",
     },
