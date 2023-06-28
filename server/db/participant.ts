@@ -1,4 +1,4 @@
 import connection from './connection'
-// import { } from '../../models/'
+import { Participant } from '../../models'
 
 //PAGE 2 DB FUNCTIONS HERE
