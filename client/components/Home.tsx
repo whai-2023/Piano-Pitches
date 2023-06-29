@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
 
 function Home() {

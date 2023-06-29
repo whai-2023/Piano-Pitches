@@ -9,7 +9,8 @@ exports.seed = async function (knex) {
     {
       id: 1,
       name: 'Dallin',
-      audioURL: '',
+      key: 'C2',
+      audioURL: 'dallin.mp3',
       question:
         'If you could be any fictional character for a day, who would you choose and why?',
       answer: 'Scooby Doo, because he was my childhood hero.',
@@ -17,7 +18,8 @@ exports.seed = async function (knex) {
     {
       id: 2,
       name: 'Dillon',
-      audioURL: '',
+      key: 'D2',
+      audioURL: 'dillon.mp3',
       question: "What is the strangest thing you've ever eaten?",
       answer:
         'Chicken feet was definitely a weird experience. It was tasty but looked so weird!',
@@ -25,25 +27,32 @@ exports.seed = async function (knex) {
     {
       id: 3,
       name: 'Martin',
-      audioURL: '/audio/martin.m4a',
+      key: 'E4',
+      audioURL: 'martin.mp3',
       question: 'If animals could talk, which one would be the rudest?',
       answer: 'Cat',
     },
     {
       id: 4,
       name: 'Min',
-      audioURL: '',
+      key: 'F3',
+      audioURL: 'min.mp3',
       question:
-        'If you were a vegetable, what vegetable would you be and how would you spend your day?',
+        'What’s one thing your pet could say that would completely ruin your image if they could talk?',
       answer:
-        "Broccoli and I'd pretend to be a tree to make little kids eat me for their nutritional development. ",
+        "A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten' ",
     },
     {
       id: 5,
       name: 'Renee',
-      audioURL: '/audio/renee.m4a',
-      question: "What is the weirdest dream you've ever had?",
-      answer: "All my dreams are weird! Don't make me choose just one",
+      key: 'F4',
+      audioURL: 'renee.mp3',
+      question: 'What would you do if you could live forever?',
+      answer:
+        'Live in all the countries of the world, learn all the languages, and eat all the food!',
     },
   ])
 }
+
+// for some reason my discord has gone awol lol
+// turn it off and on again haha
