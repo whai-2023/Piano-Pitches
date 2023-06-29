@@ -1,7 +1,7 @@
 export interface Participant {
   id: number
-  name: string
   key: string
+  name: string
   audioURL: string
   question: string
   answer: string
