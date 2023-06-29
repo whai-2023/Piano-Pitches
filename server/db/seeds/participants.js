@@ -9,6 +9,7 @@ exports.seed = async function (knex) {
     {
       id: 1,
       name: 'Dallin',
+      key: 'C2',
       audioURL: '',
       question:
         'If you could be any fictional character for a day, who would you choose and why?',
@@ -17,6 +18,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       name: 'Dillon',
+      key: 'D2',
       audioURL: '',
       question: "What is the strangest thing you've ever eaten?",
       answer:
@@ -25,6 +27,7 @@ exports.seed = async function (knex) {
     {
       id: 3,
       name: 'Martin',
+      key: 'E4',
       audioURL: '',
       question: 'If animals could talk, which one would be the rudest?',
       answer: 'Cat',
@@ -32,6 +35,7 @@ exports.seed = async function (knex) {
     {
       id: 4,
       name: 'Min',
+      key: 'F3',
       audioURL: '',
       question:
         'If you were a vegetable, what vegetable would you be and how would you spend your day?',
@@ -41,9 +45,13 @@ exports.seed = async function (knex) {
     {
       id: 5,
       name: 'Renee',
+      key: 'F4',
       audioURL: '',
       question: "What is the weirdest dream you've ever had?",
       answer: "All my dreams are weird! Don't make me choose just one",
     },
   ])
 }
+
+// for some reason my discord has gone awol lol
+// turn it off and on again haha
