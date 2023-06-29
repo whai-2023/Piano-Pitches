@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useCallback, useState } from 'react'
 import React from 'react'
-import getRandomColour from '../styles/getRandomColour'
+import getRandomColour from '../apis/getRandomColour'
 
 function Page2() {
   const [backgroundColour, setBackgroundColour] = useState<string | null>(null)
