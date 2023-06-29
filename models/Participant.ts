@@ -6,3 +6,7 @@ export interface Participant {
   question: string
   answer: string
 }
+
+export interface ParticipantResponse {
+  participant: Participant
+}
