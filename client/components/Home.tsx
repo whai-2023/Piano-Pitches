@@ -29,6 +29,7 @@ function Home() {
           {/* <button className="searchSubmit">Become A Singer</button> */}
         </Link>
       </div>
+      <div className="homepage"></div>
     </>
   )
 }
