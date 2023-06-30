@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/C2.mp3',
       question:
         'If you could be any fictional character for a day, who would you choose and why?',
-      answer: 'Scooby Doo, because he was my childhood hero.',
+      answer: '"Scooby Doo, because he was my childhood hero."',
       image: '/image/dallin.png',
     },
     {
@@ -23,7 +23,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/D2.mp3',
       question: "What is the strangest thing you've ever eaten?",
       answer:
-        'Chicken feet was definitely a weird experience. It was tasty but looked so weird!',
+        '"Chicken feet was definitely a weird experience. It was tasty but looked so weird!"',
       image: '/image/dillon.png',
     },
     {
@@ -33,7 +33,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/E4.mp3',
       question: 'If animals could talk, which one would be the rudest?',
       answer:
-        "Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread with their 'coo-coo' attitude.",
+        "\"Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread with their 'coo-coo' attitude.\"",
       image: '/image/mc.jpg',
     },
     {
@@ -44,7 +44,7 @@ exports.seed = async function (knex) {
       question:
         'What’s one thing your pet could say that would completely ruin your image if they could talk?',
       answer:
-        "A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten' ",
+        "\"A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten.'\"",
       image: '/image/min.png',
     },
     {
@@ -53,7 +53,7 @@ exports.seed = async function (knex) {
       key: 'F4',
       audioURL: '/audio/F4.mp3',
       question: "What is the weirdest dream you've ever had?",
-      answer: "All my dreams are weird! Don't make me choose just one",
+      answer: '"All my dreams are weird! Don\'t make me choose just one."',
       image: '/image/renee.png',
     },
     {
