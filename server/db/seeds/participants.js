@@ -14,7 +14,7 @@ exports.seed = async function (knex) {
       question:
         'If you could be any fictional character for a day, who would you choose and why?',
       answer: 'Scooby Doo, because he was my childhood hero.',
-      image: '',
+      image: '/image/dallin.png',
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ exports.seed = async function (knex) {
       question: "What is the strangest thing you've ever eaten?",
       answer:
         'Chicken feet was definitely a weird experience. It was tasty but looked so weird!',
-      image: '',
+      image: '/image/dillon.png',
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ exports.seed = async function (knex) {
         'What’s one thing your pet could say that would completely ruin your image if they could talk?',
       answer:
         "A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten' ",
-      image: '',
+      image: '/image/min.png',
     },
     {
       id: 5,
@@ -54,7 +54,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/F4.mp3',
       question: "What is the weirdest dream you've ever had?",
       answer: "All my dreams are weird! Don't make me choose just one",
-      image: '',
+      image: '/image/renee.png',
     },
     {
       id: 6,

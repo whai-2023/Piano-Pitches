@@ -95,7 +95,7 @@ header input {
 .digitalName {
   display: inline-block;
   background-color: #0B0F26;
-  color: #8076A6;
+  color: #F291B5;
   padding: 4px;
   font-family: 'Digital-7 Mono', monospace;
   font-size: 36px;
@@ -127,8 +127,8 @@ header input {
 }
 
 .image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   margin-right: 20px;
   overflow: hidden; 
