@@ -1,79 +1,58 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
-import { useEffect, useMemo, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { getParticipantByKey } from '../apis/apiClient'
+import { ParticipantResponse } from '../../models/Participant'
 import React from 'react'
 import getRandomColour from '../apis/getRandomColour'
 
 function Page2() {
+  const [selectedKey, setSelectedKey] = useState<string | null>(null)
+  const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState<string | null>(null)
+  const [pressedKeys, setPressedKeys] = useState<string[]>([])
 
-  const pianoKeys = useMemo(
-    () => document.querySelectorAll<HTMLElement>('.piano-keys .key'),
-    []
-  )
   const volumeSlider = document.querySelector<HTMLInputElement>(
     '.volume-slider input'
   )
-  const keysCheckbox = document.querySelector<HTMLInputElement>(
-    '.keys-checkbox input'
-  )
-  const allKeys = useMemo(() => {
-    return Array.from(pianoKeys).map((key) => key.dataset.key || '')
-  }, [pianoKeys])
 
-  const audio = useMemo(() => new Audio(`/audio/Dallin.mp3`), [])
+  const handleKeyClick = useCallback((key: string) => {
+    setSelectedKey(key)
 
-  const playTune = useCallback(
-    (name: string) => {
-      audio.src = `/audio/${name}.mp3`
-      audio.play()
-      const clickedKey = document.querySelector<HTMLElement>(
-        `[data-key="${name}"]`
-      )
-
-      if (clickedKey) {
-        clickedKey.classList.add('active')
-        setTimeout(() => {
-          clickedKey.classList.remove('active')
-        }, 150)
+    setPressedKeys((prevPressedKeys) => {
+      if (!prevPressedKeys.includes(key)) {
+        const randomColour = getRandomColour()
+        setBackgroundColour(randomColour)
+        return [key]
       }
-    },
-    [audio]
+      return prevPressedKeys
+    })
+  }, [])
+
+  const {
+    data: participant,
+    isLoading,
+    error,
+  } = useQuery<ParticipantResponse>(['participant', selectedKey], () =>
+    getParticipantByKey(selectedKey as string)
   )
 
-  const HandleKeyClick = (key: string) => {
-    playTune(key)
-    const randomColour = getRandomColour()
-    setBackgroundColour(randomColour)
-  }
+  const [audio] = useState(new Audio())
 
   const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    audio.volume = Number(event.target.value)
+    const newVolume = Number(event.target.value)
+    setVolume(newVolume)
+    audio.volume = newVolume
   }
-
-  const showHideKeys = () => {
-    pianoKeys.forEach((key) => key.classList.toggle('hide'))
-  }
-
-  const pressedKey = useCallback(
-    (event: KeyboardEvent) => {
-      if (allKeys.includes(event.key)) {
-        playTune(event.key)
-      }
-    },
-    [allKeys, playTune]
-  )
 
   useEffect(() => {
-    document.addEventListener('keydown', pressedKey)
-    return () => {
-      document.removeEventListener('keydown', pressedKey)
+    if (participant != undefined) {
+      console.log('Participant:', participant.participant?.audioURL)
+      audio.src = participant.participant?.audioURL
+      audio.play()
     }
-  }, [pressedKey])
-
-  if (keysCheckbox) {
-    keysCheckbox.addEventListener('click', showHideKeys)
-  }
+  }, [participant, audio])
 
   if (volumeSlider) {
     volumeSlider.addEventListener(
@@ -82,7 +61,13 @@ function Page2() {
     )
   }
 
-  document.addEventListener('keydown', pressedKey)
+  if (error) {
+    return <div>There was an error: {(error as Error).message}</div>
+  }
+
+  if (!participant || isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
@@ -102,262 +87,268 @@ function Page2() {
         <div className="wrapper">
           <header>
             <h2>PIANO PITCHES!!</h2>
+            <div>
+              <span className="digitalName">
+                {participant?.participant?.name}
+              </span>
+            </div>
             <div className="column volume-slider">
               <span>Volume</span>
               <input
                 type="range"
                 min="0"
                 max="1"
-                defaultValue="0.5"
+                value={volume}
                 step="any"
+                onChange={handleVolume}
               />
-            </div>
-            <div className="column keys-checkbox">
-              <span>Show Keys</span>
-              <input type="checkbox" defaultChecked />
             </div>
           </header>
           <div className="piano-keys">
             <button
-              className="key white"
-              data-key="Dallin"
+              className={`key white ${
+                pressedKeys.includes('C2') ? 'pressed' : ''
+              }`}
+              data-key="C2"
               style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Dallin')}
+              onClick={() => handleKeyClick('C2')}
             >
               <span>C2</span>
             </button>
             <button
               className="key black"
-              data-key="Dallin-Dillon"
-              onClick={() => HandleKeyClick('Dallin-Dillon')}
+              data-key="C#2"
+              onClick={() => handleKeyClick('C#2')}
             >
               <span>C#2</span>
             </button>
             <button
-              className="key white"
-              data-key="Dillon"
+              className={`key white ${
+                pressedKeys.includes('D2') ? 'pressed' : ''
+              }`}
+              data-key="D2"
               style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Dillon')}
+              onClick={() => handleKeyClick('D2')}
             >
               <span>D2</span>
             </button>
             <button
               className="key black"
-              data-key="Dillon-Dylan"
-              onClick={() => HandleKeyClick('Dillon-Dylan')}
+              data-key="D#2"
+              onClick={() => handleKeyClick('D#2')}
             >
               <span>D#2</span>
             </button>
             <button
               className="key white"
-              data-key="Dylan"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Dylan')}
+              data-key="E2"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('E2')}
             >
               <span>E2</span>
             </button>
             <button
               className="key white"
-              data-key="Siza"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Siza')}
+              data-key="F2"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('F2')}
             >
               <span>F2</span>
             </button>
             <button
               className="key black"
-              data-key="Siza-Jen"
-              onClick={() => HandleKeyClick('Siza-Jen')}
+              data-key="F#2"
+              onClick={() => handleKeyClick('F#2')}
             >
               <span>F#2</span>
             </button>
             <button
               className="key white"
-              data-key="Jen"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Jen')}
+              data-key="G2"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('G2')}
             >
               <span>G2</span>
             </button>
             <button
               className="key black"
-              data-key="Jen-Jiho"
-              onClick={() => HandleKeyClick('Jen-Jiho')}
+              data-key="G#2"
+              onClick={() => handleKeyClick('G#2')}
             >
               <span>G#2</span>
             </button>
             <button
               className="key white"
-              data-key="Jiho"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Jiho')}
+              data-key="A2"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('A2')}
             >
               <span>A2</span>
             </button>
             <button
               className="key black"
-              data-key="Jiho-Scott"
-              onClick={() => HandleKeyClick('Jiho-Scott')}
+              data-key="A#2"
+              onClick={() => handleKeyClick('A#2')}
             >
               <span>A#2</span>
             </button>
             <button
               className="key white"
-              data-key="Scott"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Scott')}
+              data-key="B2"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('B2')}
             >
               <span>B2</span>
             </button>
             <button
               className="key white"
-              data-key="Denyce"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Denyce')}
+              data-key="C3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('C3')}
             >
               <span>C3</span>
             </button>
             <button
               className="key black"
-              data-key="Denyce-Michael"
-              onClick={() => HandleKeyClick('Denyce-Michael')}
+              data-key="C#3"
+              onClick={() => handleKeyClick('C#3')}
             >
               <span>C#3</span>
             </button>
             <button
               className="key white"
-              data-key="Michael"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Michael')}
+              data-key="D3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('D3')}
             >
               <span>D3</span>
             </button>
             <button
               className="key black"
-              data-key="Michael-BenW"
-              onClick={() => HandleKeyClick('Michael-BenW')}
+              data-key="D#3"
+              onClick={() => handleKeyClick('D#3')}
             >
               <span>D#3</span>
             </button>
             <button
               className="key white"
-              data-key="BenW"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('BenW')}
+              data-key="E3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('E3')}
             >
               <span>E3</span>
             </button>
             <button
               className="key white"
-              data-key="Min"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Min')}
+              data-key="F3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('F3')}
             >
               <span>F3</span>
             </button>
             <button
               className="key black"
-              data-key="Min-Teri"
-              onClick={() => HandleKeyClick('Min-Teri')}
+              data-key="F#3"
+              onClick={() => handleKeyClick('F#3')}
             >
               <span>F#3</span>
             </button>
             <button
               className="key white"
-              data-key="Teri"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Teri')}
+              data-key="G3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('G3')}
             >
               <span>G3</span>
             </button>
             <button
               className="key black"
-              data-key="Teri-BenH"
-              onClick={() => HandleKeyClick('Teri-BenH')}
+              data-key="G#3"
+              onClick={() => handleKeyClick('G#3')}
             >
               <span>G#3</span>
             </button>
             <button
               className="key white"
-              data-key="BenH"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('BenH')}
+              data-key="A3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('A3')}
             >
               <span>A3</span>
             </button>
             <button
               className="key black"
-              data-key="BenH-David"
-              onClick={() => HandleKeyClick('BenH-David')}
+              data-key="A#3"
+              onClick={() => handleKeyClick('A#3')}
             >
               <span>A#3</span>
             </button>
             <button
               className="key white"
-              data-key="David"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('David')}
+              data-key="B3"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('B3')}
             >
               <span>B3</span>
             </button>
             <button
               className="key white"
-              data-key="Krissy"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Krissy')}
+              data-key="C4"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('C4')}
             >
               <span>C4</span>
             </button>
             <button
               className="key black"
-              data-key="Krissy-Jatin"
-              onClick={() => HandleKeyClick('Krissy-Jatin')}
+              data-key="C#4"
+              onClick={() => handleKeyClick('C#4')}
             >
               <span>C#4</span>
             </button>
             <button
               className="key white"
-              data-key="Jatin"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Jatin')}
+              data-key="D4"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('D4')}
             >
               <span>D4</span>
             </button>
             <button
               className="key black"
-              data-key="Jatin-Martin"
-              onClick={() => HandleKeyClick('Jatin-Martin')}
+              data-key="D#4"
+              onClick={() => handleKeyClick('D#4')}
             >
               <span>D#4</span>
             </button>
             <button
               className="key white"
-              data-key="Martin"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Martin')}
+              data-key="E4"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('E4')}
             >
               <span>E4</span>
             </button>
             <button
               className="key white"
-              data-key="Renee"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Renee')}
+              data-key="F4"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('F4')}
             >
               <span>F4</span>
             </button>
             <button
               className="key black"
-              data-key="Renee-Rohan"
-              onClick={() => HandleKeyClick('Renee-Rohan')}
+              data-key="F#4"
+              onClick={() => handleKeyClick('F#4')}
             >
               <span>F#4</span>
             </button>
             <button
               className="key white"
-              data-key="Rohan"
-              style={{ background: backgroundColour ?? 'white' }}
-              onClick={() => HandleKeyClick('Rohan')}
+              data-key="G4"
+              // style={{ background: backgroundColour ?? 'white' }}
+              onClick={() => handleKeyClick('G4')}
             >
               <span>G4</span>
             </button>

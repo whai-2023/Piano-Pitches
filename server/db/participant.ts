@@ -15,3 +15,17 @@ export async function getParticipantById(
     .returning('*')
   return participant
 }
+
+export function getParticipantByKey(key: string, db = connection) {
+  return db<Participant>('participants')
+    .where('key', '=', key)
+    .select()
+    .then((participants) => {
+      console.log(`Participiant with key: (${key}):`, participants)
+      return participants[0]
+    })
+    .catch((error) => {
+      console.error('Error fetching participant by key:', error)
+      throw error
+    })
+}

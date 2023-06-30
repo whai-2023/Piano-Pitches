@@ -14,6 +14,7 @@ body {
   align-items: center;
   justify-content: center;
   max-height: 100vh;
+  max-width: 100vw;
 }
 
 .subtitle {
@@ -25,11 +26,14 @@ body {
 }
 
 .homepage {
-  /* background-image: url('/public/audio/images/pitches.gif'); */
+  background-image: url('/public/audio/images/pitches.gif'); 
   background-size: contain;
-  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+  float: left;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  text-shadow: white 0px 0px 2px;
+  font-size: 16px;
 } 
 
 /* CSS Button Style below*/
