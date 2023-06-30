@@ -10,6 +10,7 @@ exports.up = function (knex) {
     table.string('audioURL')
     table.string('question')
     table.string('answer')
+    table.binary('image')
   })
 }
 

@@ -5,6 +5,7 @@ export interface Participant {
   audioURL: string
   question: string
   answer: string
+  image: string
 }
 
 export interface ParticipantResponse {
