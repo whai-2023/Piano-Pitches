@@ -2,7 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import ReadFile from '../apis/getRandomQuote'
-import { quote } from 'discord.js'
+
 interface Quotes {
   quote: string
 }
@@ -19,14 +19,16 @@ function Home() {
 
   return (
     <>
-      <header className="header">
-        <h1 className="title">Piano Pitch!!</h1>
-        <h2 className="subtitle">
-          Welcome to our Whai 2023 choir. Play our piano to hear our beautiful
-          voices.
-        </h2>
-      </header>
       <div className="homepage">
+        <div className="border">
+          <header className="header">
+            <h1 className="title">Piano Pitch!!</h1>
+            <h2 className="subtitle">
+              Welcome to our Whai 2023 choir. Play our piano to hear our
+              beautiful voices.
+            </h2>
+          </header>
+        </div>
         <div>
           <Link to={`/page2`}>
             <button className="button-82-pushable">
@@ -62,7 +64,7 @@ function Home() {
         <br></br>
         <br></br>
 
-        <h2>Quotes about music:</h2>
+        <h1 className="quotes">Quotes about music:</h1>
         <p>{data?.quote}</p>
       </div>
     </>
