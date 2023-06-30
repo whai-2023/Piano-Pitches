@@ -48,6 +48,20 @@ function Home() {
           <br></br>
         </div>
         <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
         <h2>Quotes about music:</h2>
         <p>{data?.quote}</p>
       </div>
