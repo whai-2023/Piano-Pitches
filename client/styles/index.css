@@ -32,7 +32,7 @@ body {
 }
 
 .homepage {
-  background-image: url('/public/audio/images/pitches.gif'); 
+  background-image: url('/audio/images/pitches.gif'); 
   background-size: contain;
   height:auto;
   float: right;

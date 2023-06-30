@@ -1,5 +1,5 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import ReadFile from '../apis/getRandomQuote'
 
@@ -16,6 +16,9 @@ function Home() {
   if (error) {
     return <div>An error has occurred.</div>
   }
+
+  const quote = data || ''
+  console.log(quote)
 
   return (
     <>
@@ -65,7 +68,7 @@ function Home() {
         <br></br>
 
         <h1 className="quotes">Quotes about music:</h1>
-        <p>{data?.quote}</p>
+        <p>{String(quote)}</p>
       </div>
     </>
   )
