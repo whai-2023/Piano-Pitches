@@ -79,17 +79,17 @@ header input {
 .piano-keys .key span {
   position: absolute;
   bottom: 20px;
-  width: 100%;
+  width: 0%;
   color: #A2A2A2;
   font-size: 1.13rem;
   text-align: center;
 }
-.piano-keys .key.hide span {
-  display: none;
-}
+
 .piano-keys .black span {
   bottom: 13px;
   color: #888888;
+  margin-left: -15px;
+  font-size: 1rem;
 }
 
 .digitalName {
@@ -100,7 +100,7 @@ header input {
   font-family: 'Digital-7 Mono', monospace;
   font-size: 36px;
   letter-spacing: 2px;
-  border-radius: 2px;
+  border-radius: 5px;
   text-shadow: 0 0 5px rgb(209, 36, 36);
   animation: glowing 1.5s ease-in-out infinite;
 }
