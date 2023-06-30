@@ -1,6 +1,6 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
-import { useEffect, useMemo, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
@@ -88,7 +88,9 @@ function Page2() {
           <header>
             <h2>PIANO PITCHES!!</h2>
             <div>
-              <span>Name</span>
+              <span className="digitalName">
+                {participant?.participant?.name}
+              </span>
             </div>
             <div className="column volume-slider">
               <span>Volume</span>
