@@ -2,12 +2,13 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import ReadFile from '../apis/getRandomQuote'
+import { quote } from 'discord.js'
 interface Quotes {
   quote: string
 }
 
 function Home() {
-  const { data, isLoading, error } = useQuery<Quotes>(['quote', ReadFile])
+  const { data, isLoading, error } = useQuery<Quotes>(['quote', null], ReadFile)
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -48,7 +49,7 @@ function Home() {
         </div>
         <br></br>
         <h2>Quotes about music:</h2>
-        <h1>{data}</h1>
+        <p>{data?.quote}</p>
       </div>
     </>
   )
