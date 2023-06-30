@@ -1,6 +1,6 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
-import { useEffect, useCallback, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
@@ -18,7 +18,7 @@ function Page2() {
     '.volume-slider input'
   )
 
-  const handleKeyClick = useCallback((key: string) => {
+  function handleKeyClick(key: string) {
     setSelectedKey(key)
 
     setPressedKeys((prevPressedKeys) => {
@@ -30,7 +30,7 @@ function Page2() {
       }
       return prevPressedKeys
     })
-  }, [])
+  }
 
   const {
     data: participant,
