@@ -14,6 +14,7 @@ exports.seed = async function (knex) {
       question:
         'If you could be any fictional character for a day, who would you choose and why?',
       answer: 'Scooby Doo, because he was my childhood hero.',
+      image: '',
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ exports.seed = async function (knex) {
       question: "What is the strangest thing you've ever eaten?",
       answer:
         'Chicken feet was definitely a weird experience. It was tasty but looked so weird!',
+      image: '',
     },
     {
       id: 3,
@@ -31,7 +33,8 @@ exports.seed = async function (knex) {
       audioURL: '/audio/E4.mp3',
       question: 'If animals could talk, which one would be the rudest?',
       answer:
-        "Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread. With their 'coo-coo' attitude, these sassy pigeons would become the ultimate feathered fashion police.",
+        "Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread with their 'coo-coo' attitude.",
+      image: '/image/mc.jpg',
     },
     {
       id: 4,
@@ -42,6 +45,7 @@ exports.seed = async function (knex) {
         'What’s one thing your pet could say that would completely ruin your image if they could talk?',
       answer:
         "A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten' ",
+      image: '',
     },
     {
       id: 5,
@@ -50,6 +54,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/F4.mp3',
       question: "What is the weirdest dream you've ever had?",
       answer: "All my dreams are weird! Don't make me choose just one",
+      image: '',
     },
     {
       id: 6,
@@ -58,6 +63,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: '',
       answer: '',
+      image: '',
     },
   ])
 }

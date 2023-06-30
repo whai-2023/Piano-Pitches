@@ -12,6 +12,7 @@ function Page2() {
   const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState<string | null>(null)
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
+  const [imageVisible, setImageVisible] = useState(false)
 
   const volumeSlider = document.querySelector<HTMLInputElement>(
     '.volume-slider input'
@@ -24,6 +25,7 @@ function Page2() {
       if (!prevPressedKeys.includes(key)) {
         const randomColour = getRandomColour()
         setBackgroundColour(randomColour)
+        setImageVisible(true)
         return [key]
       }
       return prevPressedKeys
@@ -74,15 +76,15 @@ function Page2() {
       <div className="media">
         <header className="header">
           <h1>Piano Pitch!!</h1>
+          <div>
+            <Link to={`/`}>
+              <button className="searchSubmit">Home</button>
+            </Link>
+            <Link to={`/page3`}>
+              <button className="searchSubmit">Become A Singer</button>
+            </Link>
+          </div>
         </header>
-        <div>
-          <Link to={`/`}>
-            <button className="searchSubmit">Home</button>
-          </Link>
-          <Link to={`/page3`}>
-            <button className="searchSubmit">Become A Singer</button>
-          </Link>
-        </div>
 
         <div className="wrapper">
           <header>
@@ -353,6 +355,17 @@ function Page2() {
               <span>G4</span>
             </button>
           </div>
+        </div>
+      </div>
+      <div className="bottomHalf">
+        <div className="image">
+          {imageVisible && (
+            <img src={participant?.participant?.image} alt="Brian Griffin" />
+          )}
+        </div>
+        <div className="qAndA">
+          <span className="question">{participant?.participant?.question}</span>
+          <p className="answer">{participant?.participant?.answer}</p>
         </div>
       </div>
     </>
