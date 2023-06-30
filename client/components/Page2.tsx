@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom'
 import { useEffect, useMemo, useCallback, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
-import { Participant, ParticipantResponse } from '../../models/Participant'
+import { ParticipantResponse } from '../../models/Participant'
 import React from 'react'
-// import getRandomColour from '../styles/getRandomColour'
+import getRandomColour from '../styles/getRandomColour'
 
 function Page2() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
+  const [backgroundColour, setBackgroundColour] = useState<string | null>(null)
+  const [pressedKeys, setPressedKeys] = useState<string[]>([])
 
   const volumeSlider = document.querySelector<HTMLInputElement>(
     '.volume-slider input'
@@ -17,6 +19,15 @@ function Page2() {
 
   const handleKeyClick = useCallback((key: string) => {
     setSelectedKey(key)
+
+    setPressedKeys((prevPressedKeys) => {
+      if (!prevPressedKeys.includes(key)) {
+        const randomColour = getRandomColour()
+        setBackgroundColour(randomColour)
+        return [key]
+      }
+      return prevPressedKeys
+    })
   }, [])
 
   const {
@@ -93,9 +104,11 @@ function Page2() {
           </header>
           <div className="piano-keys">
             <button
-              className="key white"
+              className={`key white ${
+                pressedKeys.includes('C2') ? 'pressed' : ''
+              }`}
               data-key="C2"
-              // style={{ background: backgroundColour ?? 'white' }}
+              style={{ background: backgroundColour ?? 'white' }}
               onClick={() => handleKeyClick('C2')}
             >
               <span>C2</span>
@@ -108,9 +121,11 @@ function Page2() {
               <span>C#2</span>
             </button>
             <button
-              className="key white"
+              className={`key white ${
+                pressedKeys.includes('D2') ? 'pressed' : ''
+              }`}
               data-key="D2"
-              // style={{ background: backgroundColour ?? 'white' }}
+              style={{ background: backgroundColour ?? 'white' }}
               onClick={() => handleKeyClick('D2')}
             >
               <span>D2</span>
