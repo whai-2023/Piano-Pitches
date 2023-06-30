@@ -39,9 +39,9 @@ exports.seed = async function (knex) {
       key: 'F3',
       audioURL: '/audio/F3.mp3',
       question:
-        'If you were a vegetable, what vegetable would you be and how would you spend your day?',
+        'What’s one thing your pet could say that would completely ruin your image if they could talk?',
       answer:
-        "Broccoli and I'd pretend to be a tree to make little kids eat me for their nutritional development. ",
+        "A stream of unintelligible white-noise mixed with 'food, pats, sleep, put me down' and 'where my kitten' ",
     },
     {
       id: 5,
