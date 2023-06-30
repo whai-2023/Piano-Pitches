@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ParticipantForm from './ParticipantForm'
 
 function Page3() {
   return (
@@ -14,6 +15,7 @@ function Page3() {
           <button className="searchSubmit">Back</button>
         </Link>
       </div>
+      <ParticipantForm />
     </>
   )
 }
