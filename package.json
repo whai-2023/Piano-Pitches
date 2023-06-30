@@ -32,6 +32,7 @@
     "@devacademy/eslint-config": "^1.8.0",
     "express": "^4.17.2",
     "knex": "^2.3.0",
+    "react-query": "^3.39.3",
     "react-responsive": "^9.0.2",
     "sqlite3": "^5.1.2",
     "superagent": "7.1.1"
@@ -39,7 +40,7 @@
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
     "@tanstack/eslint-plugin-query": "^4.29.9",
-    "@tanstack/react-query": "^4.29.12",
+    "@tanstack/react-query": "^4.29.19",
     "@tanstack/react-query-devtools": "^4.29.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4",
