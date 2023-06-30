@@ -10,7 +10,7 @@ import getRandomColour from '../styles/getRandomColour'
 function Page2() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
-  const [backgroundColour, setBackgroundColour] = useState<string | null>(null)
+  const [backgroundColour, setBackgroundColour] = useState<string>('white')
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
   const [imageVisible, setImageVisible] = useState(false)
 
@@ -70,6 +70,9 @@ function Page2() {
   if (!participant || isLoading) {
     return <div>Loading...</div>
   }
+  console.log(pressedKeys)
+  console.log(pressedKeys.includes('C2'))
+  console.log(pressedKeys.includes('D2'))
 
   return (
     <>
@@ -108,11 +111,19 @@ function Page2() {
           </header>
           <div className="piano-keys">
             <button
-              className={`key white ${
-                pressedKeys.includes('C2') ? 'pressed' : ''
-              }`}
+              className={`key white`}
+              // className={`key white
+              // ${
+              //   pressedKeys.includes('C2') ? 'pressed' : ''
+              // }`
+              // }
               data-key="C2"
-              style={{ background: backgroundColour ?? 'white' }}
+              // style={{ background: backgroundColour ?? 'white' }}
+              style={
+                pressedKeys.includes('C2')
+                  ? { background: backgroundColour }
+                  : {}
+              }
               onClick={() => handleKeyClick('C2')}
             >
               <span>C2</span>
@@ -125,11 +136,17 @@ function Page2() {
               <span>C#2</span>
             </button>
             <button
-              className={`key white ${
-                pressedKeys.includes('D2') ? 'pressed' : ''
-              }`}
+              // className={`key white ${
+              //   pressedKeys.includes('D2') ? 'pressed' : ''
+              // }`}
+              className={`key white`}
               data-key="D2"
-              style={{ background: backgroundColour ?? 'white' }}
+              // style={{ background: backgroundColour ?? 'white' }}
+              style={
+                pressedKeys.includes('D2')
+                  ? { background: backgroundColour }
+                  : {}
+              }
               onClick={() => handleKeyClick('D2')}
             >
               <span>D2</span>
