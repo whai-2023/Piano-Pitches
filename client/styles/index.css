@@ -31,6 +31,13 @@ body {
   color: #d8d1ff
 }
 
+.robot {
+  width: 12vw;
+  float: right;
+  margin-top: 4vh;
+}
+
+
 .homepage {
   background-image: url('/audio/images/pitches.gif'); 
   background-size: contain;
@@ -46,6 +53,41 @@ body {
 opacity: 95%;
 
 } 
+
+.quote {
+  height: 3vh;
+  max-width: 70vw;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  font-size: 1.5vw;
+  background-color: #7c6384;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 80%;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #feeeff;
+  background-color: #422f3e;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #3a002c;
+}
+
+@media (max-width:768px) {
+    .quote {
+        height:5vh;
+        width:70vw;
+        font-size:3vw;
+    }
+}
 
 /* CSS Button Style below*/
 .button-82-pushable {
@@ -158,7 +200,6 @@ opacity: 95%;
   border-radius: 20px;
   background: #141414;
 }
-
 .wrapper header {
   display: flex;
   color: #B2B2B2;
@@ -222,88 +263,46 @@ header input {
 .piano-keys .key span {
   position: absolute;
   bottom: 20px;
-  width: 0%;
+  width: 100%;
   color: #A2A2A2;
   font-size: 1.13rem;
   text-align: center;
 }
-
+.piano-keys .key.hide span {
+  display: none;
+}
 .piano-keys .black span {
   bottom: 13px;
   color: #888888;
-  margin-left: -15px;
-  font-size: 1rem;
 }
 
 .digitalName {
   display: inline-block;
-  background-color: #0B0F26;
-  color: #F291B5;
+  background-color: #181717;
+  color: rgb(209, 36, 36);
   padding: 4px;
   font-family: 'Digital-7 Mono', monospace;
   font-size: 36px;
   letter-spacing: 2px;
-  border-radius: 5px;
+  border-radius: 2px;
   text-shadow: 0 0 5px rgb(209, 36, 36);
   animation: glowing 1.5s ease-in-out infinite;
 }
 
 @keyframes glowing {
   0% {
-    box-shadow: 0 0 5px  #8076A6;
+    box-shadow: 0 0 5px rgb(209, 36, 36);
   }
   50% {
-    box-shadow: 0 0 20px  #8076A6;
+    box-shadow: 0 0 20px rgb(209, 36, 36);
   }
   100% {
-    box-shadow: 0 0 5px  #8076A6;
+    box-shadow: 0 0 5px rgb(209, 36, 36);
   }
 }
 
-/******************* BOTTOM HALF */
-
-.bottomHalf {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-right: 20px;
-  overflow: hidden; 
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-}
-
-.qAndA {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.question {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.answer {
-  margin-top: 20px;
-  font-size: 18px;
-  width: 700px;
-}
 
 
-
-/****************** MEDIA QUERY */
 
 .media {
   margin-top: 4vh;

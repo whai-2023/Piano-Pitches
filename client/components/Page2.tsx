@@ -511,6 +511,8 @@ function Page2() {
           <p className="answer">{participant?.participant?.answer}</p>
         </div>
       </div>
+      <br></br>
+      <img className="robot" src="/image/robot.gif" alt="robot"></img>
     </>
   )
 }
