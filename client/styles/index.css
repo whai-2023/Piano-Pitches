@@ -30,14 +30,104 @@ body {
   font-weight: 100;
   color: #d8d1ff
 }
+.quote {
+  height: 3vh;
+  max-width: 70vw;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  font-size: 1.5vw;
+  background-color: #7c6384;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
 
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 80%;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #feeeff;
+  background-color: #422f3e;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #3a002c;
+}
+
+@media (max-width:768px) {
+    .quote {
+        height:5vh;
+        width:70vw;
+        font-size:3vw;
+    }
+}
 .robot {
   width: 12vw;
   float: right;
-  margin-top: 4vh;
+}
+.quote {
+  height: min-content;
+  max-width: 36vw;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  margin-top: 3vh;
+  place-items: center;
+  font-size: 1.5vw;
+  background-color: #7c6384;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 80%;
+  font-weight: bold;
+  margin-top: 3vh;
+  font-size: 1vw;
+  color: #feeeff;
+  background-color: #422f3e;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #3a002c;
 }
 
+.quote2 {
+  height: min-content;
+  max-width: 36vw;
+  width: max-content;
 
+  margin: auto;
+  margin-right: 30vw;
+  display: grid;
+  place-items: center;
+  font-size: 1.5vw;
+  background-color: #ede2f0;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 98%;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #211822;
+  background-color: #b3aeb1;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #3a002c;
+}
+.fp {
+  width: 10vw;
+  size: 10%;
+  margin-top: 2vh;
+}
 .homepage {
   background-image: url('/audio/images/pitches.gif'); 
   background-size: contain;
