@@ -32,6 +32,7 @@
     "@devacademy/eslint-config": "^1.8.0",
     "@radix-ui/react-toast": "^1.1.4",
     "cloudinary": "^1.37.2",
+    "dotenv": "^16.3.1",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "notyf": "^3.10.0",

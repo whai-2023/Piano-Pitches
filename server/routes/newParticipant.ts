@@ -47,6 +47,8 @@ router.get('/page3/signature', (req, res) => {
   const apiKey = process.env.CLOUDINARY_API_KEY
   const apiSecret = process.env.CLOUDINARY_API_SECRET as string
 
+  console.log('Cloud Name:', cloudName)
+
   const timestamp = Math.round(new Date().getTime() / 1000)
 
   const signature = cloudinary.utils.api_sign_request(

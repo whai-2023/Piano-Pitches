@@ -70,7 +70,7 @@ export async function uploadAudio(audio: File) {
   formData.append('api_key', apiKey)
 
   const response = await request
-    .post(`https://api.cloudinary.com/v1_1/${cloudName}/audio/upload`)
+    .post(`https://api.cloudinary.com/v1_1/${cloudName}/video/upload`)
     .send(formData)
   const data = response.body
   return data.url
