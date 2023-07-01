@@ -7,7 +7,7 @@ import { ParticipantResponse } from '../../models/Participant'
 import React from 'react'
 import getRandomColour from '../apis/getRandomColour'
 
-function Page2() {
+function WhaiPiano() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState<string>('white')
@@ -83,7 +83,7 @@ function Page2() {
             <Link to={`/`}>
               <button className="searchSubmit">Home</button>
             </Link>
-            <Link to={`/page3`}>
+            <Link to={`/BecomeASinger`}>
               <button className="searchSubmit">Become A Singer</button>
             </Link>
           </div>
@@ -515,4 +515,4 @@ function Page2() {
   )
 }
 
-export default Page2
+export default WhaiPiano

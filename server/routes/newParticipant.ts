@@ -25,7 +25,7 @@ router.post('/page3', async (req, res) => {
     res.status(400).send('Bad Request: Server side route problem.')
     return
   }
-  const { name, question, answer, audioUrl, imageUrl } = req.body.participant
+  const { name, question, answer, audioUrl, imageUrl } = req.body.newParticipant
 
   try {
     const newParticipant = addParticipant({

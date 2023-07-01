@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ParticipantForm from './ParticipantForm'
 
-function Page3() {
+function BecomeASinger() {
   return (
     <>
       <header className="header">
@@ -11,7 +11,7 @@ function Page3() {
         <Link to={`/`}>
           <button className="searchSubmit">Home</button>
         </Link>
-        <Link to={`/page2`}>
+        <Link to={`/WhaiPiano`}>
           <button className="searchSubmit">Back</button>
         </Link>
       </div>
@@ -20,4 +20,4 @@ function Page3() {
   )
 }
 
-export default Page3
+export default BecomeASinger

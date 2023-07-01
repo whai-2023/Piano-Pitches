@@ -161,6 +161,7 @@ export default function ParticipantForm() {
 
       <div>
         <label htmlFor="audio">Audio:</label>
+        <p>(Please avoid any white space before recording.)</p>
         <br />
         <div className="file-upload-button">
           <input
