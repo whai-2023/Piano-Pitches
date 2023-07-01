@@ -2,17 +2,7 @@ exports.seed = async function (knex) {
   await knex('newParticipants').del()
   await knex('newParticipants').insert([
     {
-      // leave blank - for null purposes
       id: 1,
-      name: '',
-      key: '',
-      audioUrl: '',
-      question: '',
-      answer: '',
-      imageUrl: '',
-    },
-    {
-      id: 2,
       name: '',
       key: 'C2',
       audioUrl: '',
@@ -21,7 +11,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 3,
+      id: 2,
       name: '',
       key: 'C#2',
       audioUrl: '',
@@ -30,7 +20,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 4,
+      id: 3,
       name: '',
       key: 'D2',
       audioUrl: '',
@@ -39,7 +29,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 5,
+      id: 4,
       name: '',
       key: 'D#2',
       audioUrl: '',
@@ -48,7 +38,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 6,
+      id: 5,
       name: '',
       key: 'E2',
       audioUrl: '',
@@ -57,7 +47,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 7,
+      id: 6,
       name: '',
       key: 'F2',
       audioUrl: '',
@@ -66,7 +56,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 8,
+      id: 7,
       name: '',
       key: 'F#2',
       audioUrl: '',
@@ -75,7 +65,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 9,
+      id: 8,
       name: '',
       key: 'G2',
       audioUrl: '',
@@ -84,7 +74,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 10,
+      id: 9,
       name: '',
       key: 'G#2',
       audioUrl: '',
@@ -93,7 +83,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 11,
+      id: 10,
       name: '',
       key: 'A2',
       audioUrl: '',
@@ -102,7 +92,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 12,
+      id: 11,
       name: '',
       key: 'A#2',
       audioUrl: '',
@@ -111,7 +101,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 13,
+      id: 12,
       name: '',
       key: 'B2',
       audioUrl: '',
@@ -120,7 +110,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 14,
+      id: 13,
       name: '',
       key: 'C3',
       audioUrl: '',
@@ -129,7 +119,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 15,
+      id: 14,
       name: '',
       key: 'C#3',
       audioUrl: '',
@@ -138,7 +128,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 16,
+      id: 15,
       name: '',
       key: 'D3',
       audioUrl: '',
@@ -147,7 +137,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 17,
+      id: 16,
       name: '',
       key: 'D#3',
       audioUrl: '',
@@ -156,7 +146,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 18,
+      id: 17,
       name: '',
       key: 'E3',
       audioUrl: '',
@@ -165,7 +155,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 19,
+      id: 18,
       name: '',
       key: 'F3',
       audioUrl: '',
@@ -174,7 +164,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 20,
+      id: 19,
       name: '',
       key: 'F#3',
       audioUrl: '',
@@ -183,7 +173,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 21,
+      id: 20,
       name: '',
       key: 'G3',
       audioUrl: '',
@@ -192,7 +182,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 22,
+      id: 21,
       name: '',
       key: 'G#3',
       audioUrl: '',
@@ -201,7 +191,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 23,
+      id: 22,
       name: '',
       key: 'A3',
       audioUrl: '',
@@ -210,7 +200,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 24,
+      id: 23,
       name: '',
       key: 'A#3',
       audioUrl: '',
@@ -219,7 +209,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 25,
+      id: 24,
       name: '',
       key: 'B3',
       audioUrl: '',
@@ -228,7 +218,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 26,
+      id: 25,
       name: '',
       key: 'C4',
       audioUrl: '',
@@ -237,7 +227,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 27,
+      id: 26,
       name: '',
       key: 'C#4',
       audioUrl: '',
@@ -246,7 +236,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 28,
+      id: 27,
       name: '',
       key: 'D4',
       audioUrl: '',
@@ -255,7 +245,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 29,
+      id: 28,
       name: '',
       key: 'D#4',
       audioUrl: '',
@@ -264,7 +254,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 30,
+      id: 29,
       name: '',
       key: 'E4',
       audioUrl: '',
@@ -273,7 +263,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 31,
+      id: 30,
       name: '',
       key: 'F4',
       audioUrl: '',
@@ -282,7 +272,7 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 32,
+      id: 31,
       name: '',
       key: 'F#4',
       audioUrl: '',
@@ -291,9 +281,19 @@ exports.seed = async function (knex) {
       imageUrl: '',
     },
     {
-      id: 33,
+      id: 32,
       name: '',
       key: 'G4',
+      audioUrl: '',
+      question: '',
+      answer: '',
+      imageUrl: '',
+    },
+    {
+      // leave blank - for null purposes
+      id: 33,
+      name: '',
+      key: '',
       audioUrl: '',
       question: '',
       answer: '',

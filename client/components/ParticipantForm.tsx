@@ -1,3 +1,5 @@
+import 'notyf/notyf.min.css'
+import { Link } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { ParticipantData } from '../../models/Participant'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -7,7 +9,6 @@ import {
   uploadImage,
   uploadAudio,
 } from '../apis/apiClient'
-import { useToast } from './ui/use-toast'
 import { Notyf } from 'notyf'
 
 const initialFormData = {
@@ -25,10 +26,10 @@ export default function ParticipantForm() {
   const [audioSelected, setAudioSelected] = useState<File | null>(null)
   const [isAudioError, setIsAudioError] = useState(false)
   const [isImageError, setIsImageError] = useState(false)
-  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false)
 
   const notyf = new Notyf({
-    duration: 1500,
+    duration: 2000,
     dismissible: false,
     position: {
       x: 'center',
@@ -38,11 +39,10 @@ export default function ParticipantForm() {
       {
         type: 'success',
         background: 'rgb(202, 61, 202)',
-        icon: {
-          className: 'fas fa-check',
-          tagName: 'span',
-          color: '#ffffff',
-        },
+      },
+      {
+        type: 'loading',
+        background: 'rgb(202, 61, 202)',
       },
     ],
   })
@@ -62,6 +62,8 @@ export default function ParticipantForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
+    setIsLoading(true)
+
     if (imageSelected && audioSelected) {
       const imageUrl = await uploadImage(imageSelected)
       const audioUrl = await uploadAudio(audioSelected)
@@ -71,18 +73,14 @@ export default function ParticipantForm() {
       addParticipantMutation.mutate({ ...form })
     }
 
-    setForm(initialFormData)
-
-    // toast({
-    //   promise: new Promise<void>((resolve) => {
-    //     resolve();
-    //   }),
-    //   pending: 'Submitting Form',
-    //   success: 'Form Submitted Successfully',
-    //   error: 'Error when submitting form',
-    // });
-
-    notyf.success('Form Submitted Successfully')
+    setTimeout(() => {
+      setIsLoading(false)
+      setForm(initialFormData)
+      notyf.success('Form Submitted Successfully')
+      setTimeout(() => {
+        ;<Link to={`/Playground`}></Link>
+      }, 3000)
+    }, 3000)
   }
 
   useEffect(() => {
@@ -221,6 +219,7 @@ export default function ParticipantForm() {
       </div>
 
       <button disabled={isAudioError || isImageError}>Add Participant</button>
+      {isLoading && <div>Submitting...</div>}
     </form>
   )
 }
