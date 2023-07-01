@@ -3,7 +3,7 @@ import express from 'express'
 import path from 'path'
 
 import page2 from './routes/page2'
-import page3 from './routes/page3'
+import page3 from './routes/question'
 
 const server = express()
 server.use(express.json())

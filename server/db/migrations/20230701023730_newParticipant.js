@@ -1,15 +1,15 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('participants', (table) => {
+  return knex.schema.createTable('newParticipants', (table) => {
     table.increments('id').primary()
     table.string('key').primary()
     table.string('name')
-    table.string('audioURL')
+    table.string('audioUrl')
     table.string('question')
     table.string('answer')
-    table.binary('image')
+    table.string('imageUrl')
   })
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('participants')
+  return knex.schema.dropTable('newParticipants')
 }
