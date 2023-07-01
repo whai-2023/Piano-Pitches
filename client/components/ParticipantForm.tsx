@@ -114,8 +114,12 @@ export default function ParticipantForm() {
   }
 
   function validateImageType(file: File): boolean {
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/bmp']
-    return allowedTypes.includes(file.type)
+    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.bmp']
+    const fileName = file.name
+    const fileExtension = fileName
+      .substring(fileName.lastIndexOf('.'))
+      .toLowerCase()
+    return allowedExtensions.includes(fileExtension)
   }
 
   return (
