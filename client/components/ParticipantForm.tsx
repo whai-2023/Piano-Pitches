@@ -1,5 +1,5 @@
 import 'notyf/notyf.min.css'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { ParticipantData } from '../../models/Participant'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -27,9 +27,9 @@ export default function ParticipantForm() {
   const [isAudioError, setIsAudioError] = useState(false)
   const [isImageError, setIsImageError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
   const notyf = new Notyf({
-    duration: 2000,
     dismissible: false,
     position: {
       x: 'center',
@@ -38,10 +38,6 @@ export default function ParticipantForm() {
     types: [
       {
         type: 'success',
-        background: 'rgb(202, 61, 202)',
-      },
-      {
-        type: 'loading',
         background: 'rgb(202, 61, 202)',
       },
     ],
@@ -73,14 +69,12 @@ export default function ParticipantForm() {
       addParticipantMutation.mutate({ ...form })
     }
 
+    setIsLoading(false)
+    // setForm(initialFormData)
+    notyf.success('Form Submitted Successfully')
     setTimeout(() => {
-      setIsLoading(false)
-      setForm(initialFormData)
-      notyf.success('Form Submitted Successfully')
-      setTimeout(() => {
-        ;<Link to={`/Playground`}></Link>
-      }, 3000)
-    }, 3000)
+      navigate('/Playground')
+    }, 2000)
   }
 
   useEffect(() => {
