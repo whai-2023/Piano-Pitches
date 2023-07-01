@@ -78,7 +78,7 @@ exports.seed = async function (knex) {
       question: 'What vegetable would you be and how would you spend your day?',
       answer:
         '"I would like to be a vegetable that climbs, like a broad bean. Climbs right up to the sky and enjoys the sun all day and is happy."',
-      image: '',
+      image: '/image/siza.png',
     },
     {
       id: 9,
@@ -87,7 +87,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: "What is the weirdest dream you've ever had?",
       answer: '""',
-      image: '',
+      image: '/image/jen.png',
     },
     {
       id: 10,
@@ -107,7 +107,7 @@ exports.seed = async function (knex) {
       question: "What's the most hilarious joke you've ever heard?",
       answer:
         '"For the Kes-Ke-Say teacher led project, I had to edit a name and Aiden suggested Ben Dover. Krissy came in, read the name and just laughed..."',
-      image: '',
+      image: '/image/scott.png',
     },
     {
       id: 12,
@@ -118,7 +118,7 @@ exports.seed = async function (knex) {
         'Who would you switch lives with for a week and what would you do?',
       answer:
         '"Taylor Swift because she\'s amazing and she\'s making bank on her world tour rn."',
-      image: '',
+      image: '/image/denyce.png',
     },
     {
       id: 13,
@@ -183,7 +183,7 @@ exports.seed = async function (knex) {
       question:
         "What's your favorite thing to wear that you would never want to wear to a job interview?",
       answer: '"An Oodie."',
-      image: '',
+      image: '/image/jatin.png',
     },
   ])
 }
