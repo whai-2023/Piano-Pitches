@@ -4,9 +4,6 @@ const router = express.Router()
 
 //server = /api/v1
 
-//PAGE 2 SERVER SIDE ROUTES FUNCTIONS HERE
-
-// GET /api/v1/whaiPiano/:key
 router.get('/whaiPiano/:key', async (req, res) => {
   try {
     const key = req.params.key

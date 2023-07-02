@@ -98,9 +98,10 @@ function Playground() {
               </span>
             </div>
             <div className="column volume-slider">
-              <span>Volume</span>
+              <label htmlFor="volume-slider">Volume</label>
               <input
                 type="range"
+                id="volume-slider"
                 min="0"
                 max="1"
                 value={volume}

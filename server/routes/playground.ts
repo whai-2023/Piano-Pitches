@@ -4,9 +4,6 @@ const router = express.Router()
 
 //server = /api/v1
 
-//PAGE 4 SERVER SIDE ROUTES FUNCTIONS HERE
-
-// GET /api/v1/playground/:key
 router.get('/playground/:key', async (req, res) => {
   try {
     const key = req.params.key

@@ -7,7 +7,6 @@ const router = express.Router()
 
 //server = /api/v1
 
-//PAGE 3 GET
 router.get('/page3', async (req, res) => {
   try {
     const questions = await getQuestions()
@@ -20,7 +19,6 @@ router.get('/page3', async (req, res) => {
   }
 })
 
-//PAGE 3 POST
 router.post('/page3', async (req, res) => {
   if (!req.body) {
     res.status(400).send('Bad Request: Server side route problem.')

@@ -153,7 +153,7 @@ export default function ParticipantForm() {
       </div>
 
       <div>
-        <label htmlFor="audio">Audio:</label>
+        <label htmlFor="audioUrl">Audio:</label>
         <p>(Please avoid any white space before recording.)</p>
         <br />
         <div className="file-upload-button">
@@ -184,7 +184,7 @@ export default function ParticipantForm() {
       </div>
 
       <div>
-        <label htmlFor="image">Image:</label>
+        <label htmlFor="imageUrl">Image:</label>
         <br />
         <div className="file-upload-button">
           <input
