@@ -19,3 +19,16 @@ export interface ParticipantData {
   answer: string
   imageUrl: string
 }
+
+export interface NewParticipant {
+  id: number
+  key: string
+  name: string
+  audioUrl: string
+  question: string
+  answer: string
+  imageUrl: string
+}
+export interface NewParticipantResponse {
+  newParticipant: NewParticipant
+}

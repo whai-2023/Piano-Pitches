@@ -70,9 +70,6 @@ function WhaiPiano() {
   if (!participant || isLoading) {
     return <div>Loading...</div>
   }
-  console.log(pressedKeys)
-  console.log(pressedKeys.includes('C2'))
-  console.log(pressedKeys.includes('D2'))
 
   return (
     <>
@@ -85,6 +82,9 @@ function WhaiPiano() {
             </Link>
             <Link to={`/BecomeASinger`}>
               <button className="searchSubmit">Become A Singer</button>
+            </Link>
+            <Link to={`/Playground`}>
+              <button className="searchSubmit">Playground</button>
             </Link>
           </div>
         </header>

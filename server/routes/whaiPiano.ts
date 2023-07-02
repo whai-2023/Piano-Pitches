@@ -6,8 +6,8 @@ const router = express.Router()
 
 //PAGE 2 SERVER SIDE ROUTES FUNCTIONS HERE
 
-// GET /api/v1/page2/:key
-router.get('/page2/:key', async (req, res) => {
+// GET /api/v1/whaiPiano/:key
+router.get('/whaiPiano/:key', async (req, res) => {
   try {
     const key = req.params.key
     const participant = await getParticipantByKey(key)

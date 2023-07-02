@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import express from 'express'
 import path from 'path'
 
-import page2 from './routes/piano'
+import page2 from './routes/whaiPiano'
 import page3 from './routes/newParticipant'
 import page4 from './routes/playground'
 

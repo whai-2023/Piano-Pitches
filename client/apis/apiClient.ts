@@ -1,19 +1,29 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import request from 'superagent'
 import {
-  Participant,
   ParticipantResponse,
   ParticipantData,
+  NewParticipantResponse,
 } from '../../models/Participant'
 
 import { Questions } from '../../models/questions'
 
-// GET /api/v1/page2/:key
+//////////////////// GET /api/v1/whaiPiano/:key
 
 export async function getParticipantByKey(
   key: string
 ): Promise<ParticipantResponse> {
-  const response = await request.get(`/api/v1/page2/${key}`)
+  const response = await request.get(`/api/v1/whaiPiano/${key}`)
+  console.table(response.body)
+  return response.body
+}
+
+//////////////////// GET /api/v1/playground/:key
+
+export async function getNewParticipantByKey(
+  key: string
+): Promise<NewParticipantResponse> {
+  const response = await request.get(`/api/v1/playground/${key}`)
   console.table(response.body)
   return response.body
 }

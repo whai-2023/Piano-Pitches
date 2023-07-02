@@ -70,8 +70,7 @@ export default function ParticipantForm() {
     }
 
     setIsLoading(false)
-    // setForm(initialFormData)
-    notyf.success('Form Submitted Successfully')
+    notyf.success('Form Submitted Successfully. Time to play!')
     setTimeout(() => {
       navigate('/Playground')
     }, 2000)
