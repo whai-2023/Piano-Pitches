@@ -145,7 +145,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/G3.mp3',
       question: 'What food do you love but would never admit to liking?',
       answer: '"Glue or something like that or Ben H\'s hair."',
-      image: '',
+      image: '/image/teri.png',
     },
     {
       id: 16,
@@ -154,7 +154,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/A3.mp3',
       question: 'What animal would you never want as a pet?',
       answer: '"Shark."',
-      image: '',
+      image: '/image/benh.png',
     },
     {
       id: 17,
@@ -164,7 +164,7 @@ exports.seed = async function (knex) {
       question: 'What superpower would be the most inconvenient?',
       answer:
         '"I think feeling hot on one side of your body and cold on the other would be the most inconvenient superpower."',
-      image: '',
+      image: '/image/david.png',
     },
     {
       id: 18,
@@ -173,7 +173,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: 'What celebrity would you never want to meet in real life?',
       answer: '""',
-      image: '',
+      image: '/image/krissy.png',
     },
     {
       id: 19,
