@@ -124,13 +124,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="C#2"
+              data-key="CW2"
               style={
-                pressedKeys.includes('C#2')
+                pressedKeys.includes('CW2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('C#2')}
+              onClick={() => handleKeyClick('CW2')}
             >
               <span>C#2</span>
             </button>

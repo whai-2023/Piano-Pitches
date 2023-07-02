@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
     {
       id: 2,
       name: '',
-      key: 'C%232',
+      key: 'CW2',
       audioUrl: '',
       question: '',
       answer: '',
