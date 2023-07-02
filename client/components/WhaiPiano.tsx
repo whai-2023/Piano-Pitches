@@ -498,20 +498,31 @@ function WhaiPiano() {
           </div>
         </div>
       </div>
+      <br></br>
       <div className="bottomHalf">
-        <div className="image">
+        <div className="quote">
+          <div className="qAndA">
+            <span className="question">
+              {participant?.participant?.question}
+            </span>
+          </div>
+          <br></br>
+          <div className="quote2">
+            <p className="answer">{participant?.participant?.answer}</p>
+          </div>
+        </div>
+      </div>
+
+      <img className="robot" src="/image/robot.gif" alt="robot"></img>
+      <div className="image">
+        <div className="fp1">
           {imageVisible && (
             <img
+              className="fp"
               src={participant?.participant?.image}
               alt="participant logo depending on key"
             />
           )}
-        </div>
-        <div className="qAndA">
-          <span id="question" className="question">
-            {participant?.participant?.question}
-          </span>
-          <p className="answer">{participant?.participant?.answer}</p>
         </div>
       </div>
     </>
