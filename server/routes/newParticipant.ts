@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { v2 as cloudinary } from 'cloudinary'
 import express from 'express'
 import { getQuestions } from '../db/question'
@@ -6,7 +7,6 @@ const router = express.Router()
 
 //server = /api/v1
 
-//PAGE 3 GET
 router.get('/page3', async (req, res) => {
   try {
     const questions = await getQuestions()
@@ -19,12 +19,12 @@ router.get('/page3', async (req, res) => {
   }
 })
 
-//PAGE 3 POST
 router.post('/page3', async (req, res) => {
   if (!req.body) {
     res.status(400).send('Bad Request: Server side route problem.')
     return
   }
+
   const { name, question, answer, audioUrl, imageUrl } = req.body.newParticipant
 
   try {
@@ -46,8 +46,6 @@ router.get('/page3/signature', (req, res) => {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME
   const apiKey = process.env.CLOUDINARY_API_KEY
   const apiSecret = process.env.CLOUDINARY_API_SECRET as string
-
-  console.log('Cloud Name:', cloudName)
 
   const timestamp = Math.round(new Date().getTime() / 1000)
 

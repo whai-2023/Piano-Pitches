@@ -1,9 +1,7 @@
 exports.seed = (knex) => {
-  // Deletes ALL existing entries
   return knex('questions')
     .del()
     .then(() => {
-      // Inserts seed entries
       return knex('questions').insert([
         {
           id: 1,
