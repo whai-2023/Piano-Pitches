@@ -91,7 +91,7 @@ function Playground() {
 
         <div className="wrapper">
           <header>
-            <h2>PIANO PITCHES!!</h2>
+            <h2>PLAYGROUND</h2>
             <div>
               <span className="digitalName">
                 {newParticipant?.newParticipant?.name}

@@ -70,10 +70,12 @@ export default function ParticipantForm() {
     }
 
     setIsLoading(false)
-    notyf.success('Form Submitted Successfully. Time to play!')
+    notyf.success(
+      'Form Submitted Successfully. Time to play and find your key!'
+    )
     setTimeout(() => {
       navigate('/Playground')
-    }, 2000)
+    }, 3000)
   }
 
   useEffect(() => {
