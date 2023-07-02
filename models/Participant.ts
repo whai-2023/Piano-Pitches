@@ -14,7 +14,21 @@ export interface ParticipantResponse {
 
 export interface ParticipantData {
   name: string
-  audioURL: string
+  audioUrl: string
   question: string
   answer: string
+  imageUrl: string
+}
+
+export interface NewParticipant {
+  id: number
+  key: string
+  name: string
+  audioUrl: string
+  question: string
+  answer: string
+  imageUrl: string
+}
+export interface NewParticipantResponse {
+  newParticipant: NewParticipant
 }

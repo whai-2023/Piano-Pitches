@@ -2,12 +2,12 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getParticipantByKey } from '../apis/apiClient'
-import { ParticipantResponse } from '../../models/Participant'
+import { getNewParticipantByKey } from '../apis/apiClient'
+import { NewParticipantResponse } from '../../models/Participant'
 import React from 'react'
 import getRandomColour from '../apis/getRandomColour'
 
-function Page2() {
+function Playground() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState<string>('white')
@@ -33,11 +33,11 @@ function Page2() {
   }
 
   const {
-    data: participant,
+    data: newParticipant,
     isLoading,
     error,
-  } = useQuery<ParticipantResponse>(['participant', selectedKey], () =>
-    getParticipantByKey(selectedKey as string)
+  } = useQuery<NewParticipantResponse>(['newParticipant', selectedKey], () =>
+    getNewParticipantByKey(selectedKey as string)
   )
 
   const [audio] = useState(new Audio())
@@ -49,12 +49,12 @@ function Page2() {
   }
 
   useEffect(() => {
-    if (participant != undefined) {
-      console.log('Participant:', participant.participant?.audioURL)
-      audio.src = participant.participant?.audioURL
+    if (newParticipant != undefined) {
+      console.log('newParticipant:', newParticipant.newParticipant?.audioUrl)
+      audio.src = newParticipant.newParticipant?.audioUrl
       audio.play()
     }
-  }, [participant, audio])
+  }, [newParticipant, audio])
 
   if (volumeSlider) {
     volumeSlider.addEventListener(
@@ -67,24 +67,24 @@ function Page2() {
     return <div>There was an error: {(error as Error).message}</div>
   }
 
-  if (!participant || isLoading) {
+  if (!newParticipant || isLoading) {
     return <div>Loading...</div>
   }
-  console.log(pressedKeys)
-  console.log(pressedKeys.includes('C2'))
-  console.log(pressedKeys.includes('D2'))
 
   return (
     <>
       <div className="media">
         <header className="header">
-          <h1>Piano Pitch!!</h1>
+          <h1>Find your key!</h1>
           <div>
             <Link to={`/`}>
               <button className="searchSubmit">Home</button>
             </Link>
-            <Link to={`/page3`}>
-              <button className="searchSubmit">Become A Singer</button>
+            <Link to={`/WhaiPiano`}>
+              <button className="searchSubmit">Whai Piano</button>
+            </Link>
+            <Link to={`/BecomeASinger`}>
+              <button className="searchSubmit">BecomeASinger</button>
             </Link>
           </div>
         </header>
@@ -94,7 +94,7 @@ function Page2() {
             <h2>PIANO PITCHES!!</h2>
             <div>
               <span className="digitalName">
-                {participant?.participant?.name}
+                {newParticipant?.newParticipant?.name}
               </span>
             </div>
             <div className="column volume-slider">
@@ -501,18 +501,20 @@ function Page2() {
         <div className="image">
           {imageVisible && (
             <img
-              src={participant?.participant?.image}
-              alt="participant logo depending on key"
+              src={newParticipant?.newParticipant?.imageUrl}
+              alt="newParticipant logo depending on key"
             />
           )}
         </div>
         <div className="qAndA">
-          <span className="question">{participant?.participant?.question}</span>
-          <p className="answer">{participant?.participant?.answer}</p>
+          <span className="question">
+            {newParticipant?.newParticipant?.question}
+          </span>
+          <p className="answer">{newParticipant?.newParticipant?.answer}</p>
         </div>
       </div>
     </>
   )
 }
 
-export default Page2
+export default Playground
