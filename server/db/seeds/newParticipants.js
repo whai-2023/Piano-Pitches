@@ -31,7 +31,7 @@ exports.seed = async function (knex) {
     {
       id: 4,
       name: '',
-      key: 'D#2',
+      key: 'DW2',
       audioUrl: '',
       question: '',
       answer: '',
@@ -58,7 +58,7 @@ exports.seed = async function (knex) {
     {
       id: 7,
       name: '',
-      key: 'F#2',
+      key: 'FW2',
       audioUrl: '',
       question: '',
       answer: '',
@@ -76,7 +76,7 @@ exports.seed = async function (knex) {
     {
       id: 9,
       name: '',
-      key: 'G#2',
+      key: 'GW2',
       audioUrl: '',
       question: '',
       answer: '',
@@ -94,7 +94,7 @@ exports.seed = async function (knex) {
     {
       id: 11,
       name: '',
-      key: 'A#2',
+      key: 'AW2',
       audioUrl: '',
       question: '',
       answer: '',
@@ -121,7 +121,7 @@ exports.seed = async function (knex) {
     {
       id: 14,
       name: '',
-      key: 'C#3',
+      key: 'CW3',
       audioUrl: '',
       question: '',
       answer: '',
@@ -139,7 +139,7 @@ exports.seed = async function (knex) {
     {
       id: 16,
       name: '',
-      key: 'D#3',
+      key: 'DW3',
       audioUrl: '',
       question: '',
       answer: '',
@@ -166,7 +166,7 @@ exports.seed = async function (knex) {
     {
       id: 19,
       name: '',
-      key: 'F#3',
+      key: 'FW3',
       audioUrl: '',
       question: '',
       answer: '',
@@ -184,7 +184,7 @@ exports.seed = async function (knex) {
     {
       id: 21,
       name: '',
-      key: 'G#3',
+      key: 'GW3',
       audioUrl: '',
       question: '',
       answer: '',
@@ -202,7 +202,7 @@ exports.seed = async function (knex) {
     {
       id: 23,
       name: '',
-      key: 'A#3',
+      key: 'AW3',
       audioUrl: '',
       question: '',
       answer: '',
@@ -229,7 +229,7 @@ exports.seed = async function (knex) {
     {
       id: 26,
       name: '',
-      key: 'C#4',
+      key: 'CW4',
       audioUrl: '',
       question: '',
       answer: '',
@@ -247,7 +247,7 @@ exports.seed = async function (knex) {
     {
       id: 28,
       name: '',
-      key: 'D#4',
+      key: 'DW4',
       audioUrl: '',
       question: '',
       answer: '',
@@ -274,7 +274,7 @@ exports.seed = async function (knex) {
     {
       id: 31,
       name: '',
-      key: 'F#4',
+      key: 'FW4',
       audioUrl: '',
       question: '',
       answer: '',
