@@ -34,7 +34,7 @@ export async function addParticipant(
   newParticipant: ParticipantData
 ): Promise<void> {
   const response = await request.post('/api/v1/page3').send({ newParticipant })
-
+  console.log('addParticipant response:', response.body)
   return response.body.newParticipant
 }
 
@@ -65,6 +65,7 @@ export async function uploadImage(image: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`)
     .send(formData)
+  console.log('uploadImage response:', response.body)
   const data = response.body
   return data.url
 }
@@ -82,6 +83,7 @@ export async function uploadAudio(audio: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/video/upload`)
     .send(formData)
+  console.log('uploadAudio response:', response.body)
   const data = response.body
   return data.url
 }
