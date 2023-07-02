@@ -95,7 +95,6 @@ body {
   box-shadow: 10px 10px, #aa05a7;
   border: .5px solid #3a002c;
 }
-
 .quote2 {
   height: min-content;
   max-width: 36vw;
@@ -392,6 +391,47 @@ header input {
 }
 
 
+/******************* BOTTOM HALF */
+
+.bottomHalf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+  overflow: hidden; 
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.qAndA {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.question {
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.answer {
+  margin-top: 20px;
+  font-size: 24px;
+  width: 900px;
+}
+
 
 
 .media {
@@ -467,3 +507,4 @@ header input {
  
   
 }
+

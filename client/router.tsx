@@ -5,13 +5,15 @@ import {
 } from 'react-router-dom'
 
 import Home from './components/Home'
-import Page2 from './components/Page2'
-import Page3 from './components/Page3'
+import WhaiPiano from './components/WhaiPiano'
+import BecomeASinger from './components/BecomeASinger'
+import Playground from './components/Playground'
 
 export const routes = createRoutesFromElements(
   <Route path="/">
-    <Route path="/page2" element={<Page2 />} />
-    <Route path="/page3" element={<Page3 />} />
+    <Route path="/WhaiPiano" element={<WhaiPiano />} />
+    <Route path="/BecomeASinger" element={<BecomeASinger />} />
+    <Route path="/Playground" element={<Playground />} />
     <Route path="/" element={<Home />} />
   </Route>
 )

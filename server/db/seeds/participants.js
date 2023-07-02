@@ -78,7 +78,7 @@ exports.seed = async function (knex) {
       question: 'What vegetable would you be and how would you spend your day?',
       answer:
         '"I would like to be a vegetable that climbs, like a broad bean. Climbs right up to the sky and enjoys the sun all day and is happy."',
-      image: '',
+      image: '/image/siza.png',
     },
     {
       id: 9,
@@ -87,7 +87,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: "What is the weirdest dream you've ever had?",
       answer: '""',
-      image: '',
+      image: '/image/jen.png',
     },
     {
       id: 10,
@@ -107,7 +107,7 @@ exports.seed = async function (knex) {
       question: "What's the most hilarious joke you've ever heard?",
       answer:
         '"For the Kes-Ke-Say teacher led project, I had to edit a name and Aiden suggested Ben Dover. Krissy came in, read the name and just laughed..."',
-      image: '',
+      image: '/image/scott.png',
     },
     {
       id: 12,
@@ -118,7 +118,7 @@ exports.seed = async function (knex) {
         'Who would you switch lives with for a week and what would you do?',
       answer:
         '"Taylor Swift because she\'s amazing and she\'s making bank on her world tour rn."',
-      image: '',
+      image: '/image/denyce.png',
     },
     {
       id: 13,
@@ -145,7 +145,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/G3.mp3',
       question: 'What food do you love but would never admit to liking?',
       answer: '"Glue or something like that or Ben H\'s hair."',
-      image: '',
+      image: '/image/teri.png',
     },
     {
       id: 16,
@@ -154,7 +154,7 @@ exports.seed = async function (knex) {
       audioURL: '/audio/A3.mp3',
       question: 'What animal would you never want as a pet?',
       answer: '"Shark."',
-      image: '',
+      image: '/image/benh.png',
     },
     {
       id: 17,
@@ -164,7 +164,7 @@ exports.seed = async function (knex) {
       question: 'What superpower would be the most inconvenient?',
       answer:
         '"I think feeling hot on one side of your body and cold on the other would be the most inconvenient superpower."',
-      image: '',
+      image: '/image/david.png',
     },
     {
       id: 18,
@@ -173,7 +173,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: 'What celebrity would you never want to meet in real life?',
       answer: '""',
-      image: '',
+      image: '/image/krissy.png',
     },
     {
       id: 19,
@@ -183,7 +183,7 @@ exports.seed = async function (knex) {
       question:
         "What's your favorite thing to wear that you would never want to wear to a job interview?",
       answer: '"An Oodie."',
-      image: '',
+      image: '/image/jatin.png',
     },
   ])
 }
