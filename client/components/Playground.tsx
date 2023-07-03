@@ -1,10 +1,9 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getNewParticipantByKey } from '../apis/apiClient'
 import { NewParticipantResponse } from '../../models/Participant'
-import React from 'react'
 import getRandomColour from '../lib/utils'
 
 function Playground() {
@@ -14,9 +13,44 @@ function Playground() {
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
   const [imageVisible, setImageVisible] = useState(false)
 
-  const volumeSlider = document.querySelector<HTMLInputElement>(
-    '.volume-slider input'
+  const volumeSlider = useRef<HTMLInputElement>(null)
+  const audio = useRef(new Audio())
+
+  const { data: newParticipant, error } = useQuery<NewParticipantResponse>(
+    ['newParticipant', selectedKey],
+    () => getNewParticipantByKey(selectedKey as string)
   )
+
+  const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = Number(event.target.value)
+    setVolume(newVolume)
+    audio.current.volume = newVolume
+  }
+
+  useEffect(() => {
+    if (newParticipant != undefined) {
+      audio.current.src = newParticipant.newParticipant?.audioUrl
+      audio.current.play()
+    }
+  }, [newParticipant, audio])
+
+  useEffect(() => {
+    const slider = volumeSlider.current
+
+    const eventListener = (event: Event) => {
+      handleVolume(event as unknown as React.ChangeEvent<HTMLInputElement>)
+    }
+
+    if (slider) {
+      slider.addEventListener('input', eventListener)
+    }
+
+    return () => {
+      if (slider) {
+        slider.removeEventListener('input', eventListener)
+      }
+    }
+  }, [])
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)
@@ -32,38 +66,13 @@ function Playground() {
     })
   }
 
-  const { data: newParticipant, error } = useQuery<NewParticipantResponse>(
-    ['newParticipant', selectedKey],
-    () => getNewParticipantByKey(selectedKey as string)
-  )
-
-  const [audio] = useState(new Audio())
-
-  const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = Number(event.target.value)
-    setVolume(newVolume)
-    audio.volume = newVolume
-  }
-
-  useEffect(() => {
-    if (newParticipant != undefined) {
-      audio.src = newParticipant.newParticipant?.audioUrl
-      audio.play()
-    }
-  }, [newParticipant, audio])
-
-  if (volumeSlider) {
-    volumeSlider.addEventListener(
-      'input',
-      handleVolume as unknown as EventListener
-    )
-  }
-
   return (
     <>
       <div className="media">
         <header className="header">
-          {error && <div>There was an error: {(error as Error).message}</div>}
+          {error ? (
+            <div>There was an error: {(error as Error).message}</div>
+          ) : null}
           <h1>Play your key!</h1>
           <div>
             <Link to={`/`}>

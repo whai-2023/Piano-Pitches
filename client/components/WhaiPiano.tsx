@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
-import React from 'react'
 import getRandomColour from '../lib/utils'
 
 function WhaiPiano() {
@@ -21,6 +20,12 @@ function WhaiPiano() {
     () => getParticipantByKey(selectedKey as string)
   )
 
+  const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = Number(event.target.value)
+    setVolume(newVolume)
+    audio.current.volume = newVolume
+  }
+
   useEffect(() => {
     if (participant != undefined) {
       audio.current.src = participant.participant?.audioURL
@@ -29,11 +34,20 @@ function WhaiPiano() {
   }, [participant, audio])
 
   useEffect(() => {
-    if (volumeSlider.current) {
-      volumeSlider.current.addEventListener(
-        'input',
-        handleVolume as unknown as EventListener
-      )
+    const slider = volumeSlider.current
+
+    const eventListener = (event: Event) => {
+      handleVolume(event as unknown as React.ChangeEvent<HTMLInputElement>)
+    }
+
+    if (slider) {
+      slider.addEventListener('input', eventListener)
+    }
+
+    return () => {
+      if (slider) {
+        slider.removeEventListener('input', eventListener)
+      }
     }
   }, [])
 
@@ -51,17 +65,13 @@ function WhaiPiano() {
     })
   }
 
-  const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = Number(event.target.value)
-    setVolume(newVolume)
-    audio.current.volume = newVolume
-  }
-
   return (
     <>
       <div className="media">
         <header className="header">
-          {error && <div>There was an error: {(error as Error).message}</div>}
+          {error ? (
+            <div>There was an error: {(error as Error).message}</div>
+          ) : null}
           <h1>Piano Pitch!!</h1>
           <div>
             <Link to={`/`}>
