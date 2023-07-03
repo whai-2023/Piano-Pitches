@@ -2,12 +2,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import ReadFile from '../apis/getRandomQuote'
+import { useState } from 'react'
 
 interface Quotes {
   quote: string
 }
 
 function Home() {
+  const [message, setMessage] = useState('')
   const { data, isLoading, error } = useQuery<Quotes>(['quote', null], ReadFile)
   if (isLoading) {
     return <div>Loading...</div>
@@ -15,6 +17,22 @@ function Home() {
 
   if (error) {
     return <div>An error has occurred.</div>
+  }
+
+  async function onClickHelp() {
+    const messages = [
+      'Join the playground to customize the community piano! -',
+      'Remember to only upload mp3 sound files! -',
+      'Play Piano will take you to our example piano -',
+      'You can add you own image when uploading new audio -',
+      'HAVE FUN -',
+      'Be creative with it ;) -',
+    ]
+
+    const randomIndex = Math.floor(Math.random() * messages.length)
+    const randomMessage = messages[randomIndex]
+
+    setMessage(randomMessage)
   }
 
   const quote = data || ''
@@ -77,7 +95,12 @@ function Home() {
 
         <h1 className="quotes">Quotes about music:</h1>
         <p>{String(quote)}</p>
+        <p className="help"> Click robot for help</p>
       </div>
+
+      <div></div>
+      <button className="robot" onClick={onClickHelp}></button>
+      <p className="advice">{message}</p>
     </>
   )
 }

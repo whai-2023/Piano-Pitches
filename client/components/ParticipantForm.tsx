@@ -211,6 +211,7 @@ export default function ParticipantForm() {
             </div>
           )}
         </div>
+        <img className="robot" src="/image/robot.gif" alt="robot"></img>
       </div>
 
       <button disabled={isAudioError || isImageError}>Add Participant</button>
