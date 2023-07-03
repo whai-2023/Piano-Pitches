@@ -28,13 +28,6 @@ function Playground() {
   }
 
   useEffect(() => {
-    if (newParticipant != undefined) {
-      audio.current.src = newParticipant.newParticipant?.audioUrl
-      audio.current.play()
-    }
-  }, [newParticipant, audio])
-
-  useEffect(() => {
     const slider = volumeSlider.current
 
     const eventListener = (event: Event) => {
@@ -51,6 +44,13 @@ function Playground() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    if (newParticipant != undefined) {
+      audio.current.src = newParticipant.newParticipant?.audioUrl
+      audio.current.play()
+    }
+  }, [newParticipant, audio])
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)

@@ -15,6 +15,12 @@ function WhaiPiano() {
   const volumeSlider = useRef<HTMLInputElement>(null)
   const audio = useRef(new Audio())
 
+  //const blackKeys = [2,4,7,9,11]
+  //
+  //
+  //
+  //
+
   const { data: participant, error } = useQuery<ParticipantResponse>(
     ['participant', selectedKey],
     () => getParticipantByKey(selectedKey as string)
@@ -25,13 +31,6 @@ function WhaiPiano() {
     setVolume(newVolume)
     audio.current.volume = newVolume
   }
-
-  useEffect(() => {
-    if (participant != undefined) {
-      audio.current.src = participant.participant?.audioURL
-      audio.current.play()
-    }
-  }, [participant, audio])
 
   useEffect(() => {
     const slider = volumeSlider.current
@@ -50,6 +49,13 @@ function WhaiPiano() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    if (participant != undefined) {
+      audio.current.src = participant.participant?.audioURL
+      audio.current.play()
+    }
+  }, [participant, audio])
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)
