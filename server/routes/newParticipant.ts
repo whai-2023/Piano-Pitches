@@ -6,9 +6,9 @@ import { addParticipant } from '../db/newParticipant'
 import { getAllAvailableKeys } from '../db/playground'
 const router = express.Router()
 
-//server = /api/v1
+//server = /api/v1/newParticipant
 
-router.get('/page3', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const questions = await getQuestions()
     const question = questions[Math.floor(Math.random() * questions.length)]
@@ -29,7 +29,7 @@ router.get('/availableKeys', async (req, res) => {
   }
 })
 
-router.post('/page3', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     if (!req.body) {
       res.status(400).send('Bad Request: Server side route problem.')
@@ -54,7 +54,7 @@ router.post('/page3', async (req, res) => {
   }
 })
 
-router.get('/page3/signature', (req, res) => {
+router.get('/signature', (req, res) => {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME
   const apiKey = process.env.CLOUDINARY_API_KEY
   const apiSecret = process.env.CLOUDINARY_API_SECRET as string
