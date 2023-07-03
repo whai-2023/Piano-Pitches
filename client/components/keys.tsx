@@ -10,7 +10,7 @@ export const keys = [
   'GW2',
   'A2',
   'B2',
-  'CW3',
+  'C3',
   'D3',
   'DW3',
   'E3',

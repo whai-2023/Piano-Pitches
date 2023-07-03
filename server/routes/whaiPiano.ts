@@ -4,7 +4,7 @@ const router = express.Router()
 
 //server = /api/v1/whaiPiano
 
-router.get('/whaiPiano/', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const participants = await getParticipants()
     res.json({ participants })
