@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
 import React from 'react'
-import getRandomColour from '../apis/getRandomColour'
+import getRandomColour from '../lib/utils'
 
 function WhaiPiano() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)

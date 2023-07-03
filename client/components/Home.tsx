@@ -1,14 +1,14 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import ReadFile from '../apis/getRandomQuote'
+import readFile from '../apis/getRandomQuote'
 
 interface Quotes {
   quote: string
 }
 
 function Home() {
-  const { data, isLoading, error } = useQuery<Quotes>(['quote', null], ReadFile)
+  const { data, isLoading, error } = useQuery<Quotes>(['quote', null], readFile)
   if (isLoading) {
     return <div>Loading...</div>
   }
