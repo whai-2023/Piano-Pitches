@@ -11,6 +11,8 @@ const server = express()
 server.use(express.json())
 server.use(express.static(join(__dirname, 'public')))
 
+// these routes have confusing names for someone walking into the codebase for the first time
+// also: they all have the same prefix and so a `/api/v1/:id` route could break the other routes and would be hard to debug!
 server.use('/api/v1', page2)
 server.use('/api/v1', page3)
 server.use('/api/v1', page4)

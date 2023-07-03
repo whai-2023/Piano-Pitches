@@ -3,6 +3,7 @@ import { Participant } from '../../models/Participant'
 import { AvailableKeys } from '../../models/keys'
 
 export function getAllAvailableKeys(db = connection): Promise<AvailableKeys[]> {
+  // very creative usage!
   return db('newParticipants')
     .whereNot({ key: '' })
     .where({ name: '' })

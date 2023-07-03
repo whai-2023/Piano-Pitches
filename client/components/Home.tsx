@@ -8,6 +8,7 @@ interface Quotes {
 }
 
 function Home() {
+  // we liley only need `['quote']` for the key
   const { data, isLoading, error } = useQuery<Quotes>(['quote', null], ReadFile)
   if (isLoading) {
     return <div>Loading...</div>
@@ -59,6 +60,8 @@ function Home() {
           </Link>
           <br></br>
         </div>
+
+        {/* we can use margin to achieve a similar effect to `<br />` */}
         <br></br>
         <br></br>
         <br></br>
@@ -75,6 +78,7 @@ function Home() {
         <br></br>
 
         <h1 className="quotes">Quotes about music:</h1>
+        {/* We should use something like <p>Quote: {quote.quote}</p> to achieve this formatting */}
         <p>{String(quote)}</p>
       </div>
     </>

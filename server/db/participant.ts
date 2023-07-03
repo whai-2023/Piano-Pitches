@@ -20,6 +20,7 @@ export function getParticipantByKey(key: string, db = connection) {
     .where('key', '=', key)
     .select()
     .then((participants) => {
+      // we can use `.first()` instead of grabbing the first element of the array
       console.log(`Participiant with key: (${key}):`, participants)
       return participants[0]
     })

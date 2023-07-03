@@ -7,6 +7,7 @@ import { NewParticipantResponse } from '../../models/Participant'
 import React from 'react'
 import getRandomColour from '../apis/getRandomColour'
 
+// Otherwise, my feedback for WhaiPiano.tsx applies here as well.
 function Playground() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)

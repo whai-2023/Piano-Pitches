@@ -6,6 +6,7 @@ import { addParticipant } from '../db/newParticipant'
 import { getAllAvailableKeys } from '../db/playground'
 const router = express.Router()
 
+// this comment appears a few times and looks unused! purge me
 //server = /api/v1
 
 router.get('/page3', async (req, res) => {

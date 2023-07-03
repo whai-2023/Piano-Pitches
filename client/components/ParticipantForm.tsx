@@ -84,6 +84,7 @@ export default function ParticipantForm() {
   }
 
   useEffect(() => {
+    // I feel like we could use useQuery to get this data
     async function getFormQuestion() {
       const responseQuestion = await getQuestions()
       const question = responseQuestion.question

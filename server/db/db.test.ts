@@ -16,6 +16,8 @@ afterAll(() => {
 
 describe('getParticipants', () => {
   it('should return a list of participants', async () => {
+    // it's minor because typescript tells me anyway
+    // but this should be `participants`
     const participant = await db.getParticipants()
     expect(participant).toMatchInlineSnapshot(`
       [

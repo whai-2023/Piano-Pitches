@@ -1,3 +1,5 @@
+// exhaustive-deps is a _very_ important rule
+// try not to ignore it if you can afford it
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -10,10 +12,14 @@ import getRandomColour from '../apis/getRandomColour'
 function WhaiPiano() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
+  // don't need type annotation if you can infer the type from the initial value
   const [backgroundColour, setBackgroundColour] = useState<string>('white')
+  //                                                       ^this
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
   const [imageVisible, setImageVisible] = useState(false)
 
+  // try to avoid using document.querySelector in React
+  // use `useRef` instead
   const volumeSlider = document.querySelector<HTMLInputElement>(
     '.volume-slider input'
   )
@@ -32,6 +38,9 @@ function WhaiPiano() {
     })
   }
 
+  // for sake of organisation,
+  // try and keep all hooks at the top (or at least grouped together)
+  // and then group all the event handlers together
   const {
     data: participant,
     isLoading,
@@ -40,21 +49,31 @@ function WhaiPiano() {
     getParticipantByKey(selectedKey as string)
   )
 
+  // use a function to initialise the state: () => new Audio()
+  // otherwise, you'll create a new Audio instance every time the component renders (it won't be used, but it'll still be created)
   const [audio] = useState(new Audio())
 
   const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(event.target.value)
     setVolume(newVolume)
+    // if we use `useRef`, we can do this:
+    // audio.current.volume = newVolume
     audio.volume = newVolume
   }
 
   useEffect(() => {
     if (participant != undefined) {
+      // if we use `useRef`, we can do this:
+      // audio.current.src = participant.participant?.audioURL
+      // audio.current.play()
+      // etc.
       audio.src = participant.participant?.audioURL
       audio.play()
     }
   }, [participant, audio])
 
+  // we should add and remove event listeners with `useEffect`
+  // (add them in the `useEffect` callback, and remove them in the `useEffect` cleanup function)
   if (volumeSlider) {
     volumeSlider.addEventListener(
       'input',
@@ -110,6 +129,13 @@ function WhaiPiano() {
             </div>
           </header>
           <div className="piano-keys">
+            {/* These buttons look _very_ similar
+              You could probably:
+                1. extract a key into its own component
+                2. define data for each key (e.g. [{ key: 'C2', colour: 'white' }, { key: 'CW2', colour: 'black' }]) (this could even go in a separate file entirely!)
+                3. map over the data to render the keys
+                4. -400 lines of code
+            */}
             <button
               className="key white"
               data-key="C2"
