@@ -44,24 +44,26 @@ export async function getNewParticipantByKey(
 export async function addParticipant(
   newParticipant: ParticipantData
 ): Promise<void> {
-  const response = await request.post('/api/v1/page3').send({ newParticipant })
+  const response = await request
+    .post('/api/v1/newParticipant')
+    .send({ newParticipant })
   return response.body.newParticipant
 }
 
 export async function getQuestions(): Promise<Questions> {
-  const response = await request.get('/api/v1/page3')
+  const response = await request.get('/api/v1/newParticipant')
   return response.body.question
 }
 
 export async function getAllAvailableKeys(): Promise<AvailableKeys[]> {
-  const response = await request.get('/api/v1/availableKeys')
+  const response = await request.get('/api/v1/newParticipant/availableKeys')
   return response.body.key
 }
 
 ///////////////////// CLOUDINARY /////////////////
 
 async function getImageSignature() {
-  const response = await request.get('/api/v1/page3/signature')
+  const response = await request.get('/api/v1/newParticipant/signature')
 
   const { signature, timestamp, cloudName, apiKey } = response.body
   return { signature, timestamp, cloudName, apiKey }

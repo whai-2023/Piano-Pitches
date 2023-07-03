@@ -102,7 +102,7 @@ export default function ParticipantForm() {
   }
 
   function validateAudioType(file: File): boolean {
-    const allowedExtensions = ['.mp3', '.wav', '.m4a']
+    const allowedExtensions = ['.mp3', '.wav']
     const fileName = file.name
     const fileExtension = fileName
       .substring(fileName.lastIndexOf('.'))
@@ -202,7 +202,7 @@ export default function ParticipantForm() {
           />
           {isAudioError && (
             <div style={{ color: 'red' }}>
-              Please select an MP3, M4A, or WAV file for the audio.
+              Please select an MP3 or WAV file for the audio.
             </div>
           )}
         </div>
