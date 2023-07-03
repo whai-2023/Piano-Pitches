@@ -68,7 +68,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: 'Which animal would be the rudest if they could talk?',
       answer: '""',
-      image: '',
+      image: '/image/dylan.png',
     },
     {
       id: 8,
@@ -84,9 +84,10 @@ exports.seed = async function (knex) {
       id: 9,
       name: 'Jen',
       key: 'G2',
-      audioURL: '',
+      audioURL: '/audio/G2.mp3',
       question: "What is the weirdest dream you've ever had?",
-      answer: '""',
+      answer:
+        '"The weirdest dream I can remember from when I was like 4 year\'s old, is me as an angel, hovering in the hallway looking down on my brother. And he was looking up at me and it was like 3rd person at some point."',
       image: '/image/jen.png',
     },
     {
@@ -97,7 +98,7 @@ exports.seed = async function (knex) {
       question:
         'What superpower would you have and what would your costume look like?',
       answer: '"My super power - telekinesis. Costume: Judge Judy. "',
-      image: '',
+      image: '/image/jiho.png',
     },
     {
       id: 11,
@@ -127,7 +128,7 @@ exports.seed = async function (knex) {
       audioURL: '',
       question: 'What flavor of ice cream would you be and why?',
       answer: '""',
-      image: '',
+      image: '/image/michael.png',
     },
     {
       id: 14,
@@ -135,8 +136,8 @@ exports.seed = async function (knex) {
       key: 'E3',
       audioURL: '',
       question: 'What would be your theme song if you walked into a room?',
-      answer: '""',
-      image: '',
+      answer: '"Thomas the Tank engine or Money for nothing by Dire Straits."',
+      image: '/image/benw.png',
     },
     {
       id: 15,
@@ -170,7 +171,7 @@ exports.seed = async function (knex) {
       id: 18,
       name: 'Krissy',
       key: 'C4',
-      audioURL: '',
+      audioURL: '/audio/C4.mp3',
       question: 'What celebrity would you never want to meet in real life?',
       answer: '""',
       image: '/image/krissy.png',

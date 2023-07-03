@@ -36,7 +36,6 @@ function Home() {
   }
 
   const quote = data || ''
-  console.log(quote)
 
   return (
     <>

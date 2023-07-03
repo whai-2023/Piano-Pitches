@@ -16,6 +16,7 @@ export interface ParticipantData {
   name: string
   audioUrl: string
   question: string
+  key: string
   answer: string
   imageUrl: string
 }
