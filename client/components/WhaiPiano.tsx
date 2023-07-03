@@ -1,6 +1,5 @@
-// eslint-disable-next-line react-hooks/exhaustive-deps
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
@@ -10,13 +9,11 @@ import getRandomColour from '../lib/utils'
 function WhaiPiano() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
-  const [backgroundColour, setBackgroundColour] = useState<string>('white')
+  const [backgroundColour, setBackgroundColour] = useState('white')
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
   const [imageVisible, setImageVisible] = useState(false)
 
-  const volumeSlider = document.querySelector<HTMLInputElement>(
-    '.volume-slider input'
-  )
+  const volumeSlider = useRef<HTMLInputElement>(null)
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)
@@ -52,12 +49,14 @@ function WhaiPiano() {
     }
   }, [participant, audio])
 
-  if (volumeSlider) {
-    volumeSlider.addEventListener(
-      'input',
-      handleVolume as unknown as EventListener
-    )
-  }
+  useEffect(() => {
+    if (volumeSlider.current) {
+      volumeSlider.current.addEventListener(
+        'input',
+        handleVolume as unknown as EventListener
+      )
+    }
+  }, [])
 
   return (
     <>
@@ -89,6 +88,7 @@ function WhaiPiano() {
             <div className="column volume-slider">
               <label htmlFor="volume-slider">Volume</label>
               <input
+                ref={volumeSlider}
                 type="range"
                 id="volume-slider"
                 min="0"
