@@ -32,12 +32,9 @@ function Playground() {
     })
   }
 
-  const {
-    data: newParticipant,
-    isLoading,
-    error,
-  } = useQuery<NewParticipantResponse>(['newParticipant', selectedKey], () =>
-    getNewParticipantByKey(selectedKey as string)
+  const { data: newParticipant, error } = useQuery<NewParticipantResponse>(
+    ['newParticipant', selectedKey],
+    () => getNewParticipantByKey(selectedKey as string)
   )
 
   const [audio] = useState(new Audio())
@@ -62,18 +59,11 @@ function Playground() {
     )
   }
 
-  if (error) {
-    return <div>There was an error: {(error as Error).message}</div>
-  }
-
-  if (!newParticipant || isLoading) {
-    return <div>Loading...</div>
-  }
-
   return (
     <>
       <div className="media">
         <header className="header">
+          {error && <div>There was an error: {(error as Error).message}</div>}
           <h1>Play your key!</h1>
           <div>
             <Link to={`/`}>
@@ -124,13 +114,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="CW2"
+              data-key="C sharp 2"
               style={
-                pressedKeys.includes('CW2')
+                pressedKeys.includes('C sharp 2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('CW2')}
+              onClick={() => handleKeyClick('C sharp 2')}
             >
               <span>C#2</span>
             </button>
@@ -148,13 +138,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="DW2"
+              data-key="D sharp 2"
               style={
-                pressedKeys.includes('DW2')
+                pressedKeys.includes('D sharp 2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('DW2')}
+              onClick={() => handleKeyClick('D sharp 2')}
             >
               <span>D#2</span>
             </button>
@@ -184,13 +174,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="FW2"
+              data-key="F sharp 2"
               style={
-                pressedKeys.includes('FW2')
+                pressedKeys.includes('F sharp 2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('FW2')}
+              onClick={() => handleKeyClick('F sharp 2')}
             >
               <span>F#2</span>
             </button>
@@ -208,13 +198,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="GW2"
+              data-key="G sharp 2"
               style={
-                pressedKeys.includes('GW2')
+                pressedKeys.includes('G sharp 2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('GW2')}
+              onClick={() => handleKeyClick('G sharp 2')}
             >
               <span>G#2</span>
             </button>
@@ -232,13 +222,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="AW2"
+              data-key="A sharp 2"
               style={
-                pressedKeys.includes('A#2')
+                pressedKeys.includes('A sharp 2')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('AW2')}
+              onClick={() => handleKeyClick('A sharp 2')}
             >
               <span>A#2</span>
             </button>
@@ -268,13 +258,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="CW3"
+              data-key="C sharp 3"
               style={
-                pressedKeys.includes('CW3')
+                pressedKeys.includes('C sharp 3')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('CW3')}
+              onClick={() => handleKeyClick('C sharp 3')}
             >
               <span>C#3</span>
             </button>
@@ -292,13 +282,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="DW3"
+              data-key="D sharp 3"
               style={
-                pressedKeys.includes('DW3')
+                pressedKeys.includes('D sharp 3')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('DW3')}
+              onClick={() => handleKeyClick('D sharp 3')}
             >
               <span>D#3</span>
             </button>
@@ -328,13 +318,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="FW3"
+              data-key="F sharp 3"
               style={
-                pressedKeys.includes('FW3')
+                pressedKeys.includes('F sharp 3')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('FW3')}
+              onClick={() => handleKeyClick('F sharp 3')}
             >
               <span>F#3</span>
             </button>
@@ -352,13 +342,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="GW3"
+              data-key="G sharp 3"
               style={
-                pressedKeys.includes('GW3')
+                pressedKeys.includes('G sharp 3')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('GW3')}
+              onClick={() => handleKeyClick('G sharp 3')}
             >
               <span>G#3</span>
             </button>
@@ -376,13 +366,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="AW3"
+              data-key="A sharp 3"
               style={
-                pressedKeys.includes('AW3')
+                pressedKeys.includes('A sharp 3')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('AW3')}
+              onClick={() => handleKeyClick('A sharp 3')}
             >
               <span>A#3</span>
             </button>
@@ -412,13 +402,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="CW4"
+              data-key="C sharp 4"
               style={
-                pressedKeys.includes('CW4')
+                pressedKeys.includes('C sharp 4')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('CW4')}
+              onClick={() => handleKeyClick('C sharp 4')}
             >
               <span>C#4</span>
             </button>
@@ -436,13 +426,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="DW4"
+              data-key="D sharp 4"
               style={
-                pressedKeys.includes('DW4')
+                pressedKeys.includes('D sharp 4')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('DW4')}
+              onClick={() => handleKeyClick('D sharp 4')}
             >
               <span>D#4</span>
             </button>
@@ -472,13 +462,13 @@ function Playground() {
             </button>
             <button
               className="key black"
-              data-key="FW4"
+              data-key="F sharp 4"
               style={
-                pressedKeys.includes('FW4')
+                pressedKeys.includes('F sharp 4')
                   ? { background: backgroundColour }
                   : {}
               }
-              onClick={() => handleKeyClick('FW4')}
+              onClick={() => handleKeyClick('F sharp 4')}
             >
               <span>F#4</span>
             </button>

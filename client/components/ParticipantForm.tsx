@@ -77,10 +77,10 @@ export default function ParticipantForm() {
     }
 
     setIsLoading(false)
-    notyf.success('Form Submitted Successfully. Time to play!')
+    notyf.success('Form Submitted Successfully. Time to sing!')
     setTimeout(() => {
       navigate('/Playground')
-    }, 3000)
+    }, 2400)
   }
 
   useEffect(() => {
@@ -97,16 +97,8 @@ export default function ParticipantForm() {
     return <div>There was an error trying to add your form</div>
   }
 
-  if (addParticipantMutation.isLoading) {
-    return <div>Adding your form</div>
-  }
-
   if (availableKeysQuery.isError) {
     return <div>There was an error trying to get your available keys</div>
-  }
-
-  if (availableKeysQuery.isLoading) {
-    return <div>Loading...</div>
   }
 
   function validateAudioType(file: File): boolean {
