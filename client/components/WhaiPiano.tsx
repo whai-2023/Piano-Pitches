@@ -14,6 +14,28 @@ function WhaiPiano() {
   const [imageVisible, setImageVisible] = useState(false)
 
   const volumeSlider = useRef<HTMLInputElement>(null)
+  const audio = useRef(new Audio())
+
+  const { data: participant, error } = useQuery<ParticipantResponse>(
+    ['participant', selectedKey],
+    () => getParticipantByKey(selectedKey as string)
+  )
+
+  useEffect(() => {
+    if (participant != undefined) {
+      audio.current.src = participant.participant?.audioURL
+      audio.current.play()
+    }
+  }, [participant, audio])
+
+  useEffect(() => {
+    if (volumeSlider.current) {
+      volumeSlider.current.addEventListener(
+        'input',
+        handleVolume as unknown as EventListener
+      )
+    }
+  }, [])
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)
@@ -29,34 +51,11 @@ function WhaiPiano() {
     })
   }
 
-  const { data: participant, error } = useQuery<ParticipantResponse>(
-    ['participant', selectedKey],
-    () => getParticipantByKey(selectedKey as string)
-  )
-
-  const [audio] = useState(new Audio())
-
   const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(event.target.value)
     setVolume(newVolume)
-    audio.volume = newVolume
+    audio.current.volume = newVolume
   }
-
-  useEffect(() => {
-    if (participant != undefined) {
-      audio.src = participant.participant?.audioURL
-      audio.play()
-    }
-  }, [participant, audio])
-
-  useEffect(() => {
-    if (volumeSlider.current) {
-      volumeSlider.current.addEventListener(
-        'input',
-        handleVolume as unknown as EventListener
-      )
-    }
-  }, [])
 
   return (
     <>
