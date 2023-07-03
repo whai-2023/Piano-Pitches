@@ -50,7 +50,6 @@ function Playground() {
 
   useEffect(() => {
     if (newParticipant != undefined) {
-      console.log('newParticipant:', newParticipant.newParticipant?.audioUrl)
       audio.src = newParticipant.newParticipant?.audioUrl
       audio.play()
     }
@@ -75,7 +74,7 @@ function Playground() {
     <>
       <div className="media">
         <header className="header">
-          <h1>Find your key!</h1>
+          <h1>Play your key!</h1>
           <div>
             <Link to={`/`}>
               <button className="searchSubmit">Home</button>

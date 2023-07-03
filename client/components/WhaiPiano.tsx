@@ -50,7 +50,6 @@ function WhaiPiano() {
 
   useEffect(() => {
     if (participant != undefined) {
-      console.log('Participant:', participant.participant?.audioURL)
       audio.src = participant.participant?.audioURL
       audio.play()
     }

@@ -5,6 +5,7 @@ import {
   ParticipantData,
   NewParticipantResponse,
 } from '../../models/Participant'
+import { AvailableKeys } from '../../models/keys'
 
 import { Questions } from '../../models/questions'
 
@@ -14,7 +15,6 @@ export async function getParticipantByKey(
   key: string
 ): Promise<ParticipantResponse> {
   const response = await request.get(`/api/v1/whaiPiano/${key}`)
-  console.table(response.body)
   return response.body
 }
 
@@ -24,7 +24,6 @@ export async function getNewParticipantByKey(
   key: string
 ): Promise<NewParticipantResponse> {
   const response = await request.get(`/api/v1/playground/${key}`)
-  console.table(response.body)
   return response.body
 }
 
@@ -34,13 +33,17 @@ export async function addParticipant(
   newParticipant: ParticipantData
 ): Promise<void> {
   const response = await request.post('/api/v1/page3').send({ newParticipant })
-  console.log('addParticipant response:', response.body)
   return response.body.newParticipant
 }
 
 export async function getQuestions(): Promise<Questions> {
   const response = await request.get('/api/v1/page3')
   return response.body.question
+}
+
+export async function getAllAvailableKeys(): Promise<AvailableKeys[]> {
+  const response = await request.get('/api/v1/availableKeys')
+  return response.body.key
 }
 
 ///////////////////// CLOUDINARY /////////////////
@@ -65,7 +68,6 @@ export async function uploadImage(image: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`)
     .send(formData)
-  console.log('uploadImage response:', response.body)
   const data = response.body
   return data.url
 }
@@ -83,7 +85,6 @@ export async function uploadAudio(audio: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/video/upload`)
     .send(formData)
-  console.log('uploadAudio response:', response.body)
   const data = response.body
   return data.url
 }
