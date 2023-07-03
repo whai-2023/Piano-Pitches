@@ -433,66 +433,6 @@ function WhaiPiano() {
             >
               <span>D4</span>
             </button>
-            <button
-              className="key black"
-              data-key="DW4"
-              style={
-                pressedKeys.includes('DW4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('DW4')}
-            >
-              <span>D#4</span>
-            </button>
-            <button
-              className="key white"
-              data-key="E4"
-              style={
-                pressedKeys.includes('E4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('E4')}
-            >
-              <span>E4</span>
-            </button>
-            <button
-              className="key white"
-              data-key="F4"
-              style={
-                pressedKeys.includes('F4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('F4')}
-            >
-              <span>F4</span>
-            </button>
-            <button
-              className="key black"
-              data-key="FW4"
-              style={
-                pressedKeys.includes('FW4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('FW4')}
-            >
-              <span>F#4</span>
-            </button>
-            <button
-              className="key white"
-              data-key="G4"
-              style={
-                pressedKeys.includes('G4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('G4')}
-            >
-              <span>G4</span>
-            </button>
           </div>
         </div>
       </div>

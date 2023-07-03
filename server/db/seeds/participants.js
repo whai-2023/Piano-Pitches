@@ -24,8 +24,8 @@ exports.seed = async function (knex) {
     {
       id: 3,
       name: 'Martin',
-      key: 'E4',
-      audioURL: '/audio/E4.mp3',
+      key: 'D3',
+      audioURL: '/audio/D3.mp3',
       question: 'If animals could talk, which one would be the rudest?',
       answer:
         "\"Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread with their 'coo-coo' attitude.\"",
@@ -45,8 +45,8 @@ exports.seed = async function (knex) {
     {
       id: 5,
       name: 'Renee',
-      key: 'F4',
-      audioURL: '/audio/F4.mp3',
+      key: 'E2',
+      audioURL: '/audio/E2.mp3',
       question: "What is the weirdest dream you've ever had?",
       answer: '"All my dreams are weird! Don\'t make me choose just one."',
       image: '/image/renee.png',
@@ -63,25 +63,16 @@ exports.seed = async function (knex) {
     },
     {
       id: 7,
-      name: 'Dylan',
-      key: 'E2',
-      audioURL: '',
-      question: 'Which animal would be the rudest if they could talk?',
-      answer: '""',
-      image: '/image/dylan.png',
-    },
-    {
-      id: 8,
       name: 'Siza',
       key: 'F2',
-      audioURL: '',
+      audioURL: '/audio/F2.mp3',
       question: 'What vegetable would you be and how would you spend your day?',
       answer:
         '"I would like to be a vegetable that climbs, like a broad bean. Climbs right up to the sky and enjoys the sun all day and is happy."',
       image: '/image/siza.png',
     },
     {
-      id: 9,
+      id: 8,
       name: 'Jen',
       key: 'G2',
       audioURL: '/audio/G2.mp3',
@@ -91,7 +82,7 @@ exports.seed = async function (knex) {
       image: '/image/jen.png',
     },
     {
-      id: 10,
+      id: 9,
       name: 'Jiho',
       key: 'A2',
       audioURL: '/audio/A2.mp3',
@@ -101,7 +92,7 @@ exports.seed = async function (knex) {
       image: '/image/jiho.png',
     },
     {
-      id: 11,
+      id: 10,
       name: 'Scott',
       key: 'B2',
       audioURL: '/audio/B2.mp3',
@@ -111,7 +102,7 @@ exports.seed = async function (knex) {
       image: '/image/scott.png',
     },
     {
-      id: 12,
+      id: 11,
       name: 'Denyce',
       key: 'C3',
       audioURL: '/audio/C3.mp3',
@@ -122,25 +113,16 @@ exports.seed = async function (knex) {
       image: '/image/denyce.png',
     },
     {
-      id: 13,
-      name: 'Michael',
-      key: 'D3',
-      audioURL: '',
-      question: 'What flavor of ice cream would you be and why?',
-      answer: '""',
-      image: '/image/michael.png',
-    },
-    {
-      id: 14,
+      id: 12,
       name: 'BenW',
       key: 'E3',
-      audioURL: '',
+      audioURL: '/audio/E3.mp3',
       question: 'What would be your theme song if you walked into a room?',
       answer: '"Thomas the Tank engine or Money for nothing by Dire Straits."',
       image: '/image/benw.png',
     },
     {
-      id: 15,
+      id: 13,
       name: 'Teri',
       key: 'G3',
       audioURL: '/audio/G3.mp3',
@@ -149,7 +131,7 @@ exports.seed = async function (knex) {
       image: '/image/teri.png',
     },
     {
-      id: 16,
+      id: 14,
       name: 'BenH',
       key: 'A3',
       audioURL: '/audio/A3.mp3',
@@ -158,7 +140,7 @@ exports.seed = async function (knex) {
       image: '/image/benh.png',
     },
     {
-      id: 17,
+      id: 15,
       name: 'David',
       key: 'B3',
       audioURL: '/audio/B3.mp3',
@@ -168,7 +150,7 @@ exports.seed = async function (knex) {
       image: '/image/david.png',
     },
     {
-      id: 18,
+      id: 16,
       name: 'Krissy',
       key: 'C4',
       audioURL: '/audio/C4.mp3',
@@ -177,7 +159,7 @@ exports.seed = async function (knex) {
       image: '/image/krissy.png',
     },
     {
-      id: 19,
+      id: 17,
       name: 'Jatin',
       key: 'D4',
       audioURL: '/audio/D4.mp3',
