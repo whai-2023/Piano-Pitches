@@ -4,6 +4,7 @@ import {
   ParticipantResponse,
   ParticipantData,
   NewParticipantResponse,
+  Participant,
 } from '../../models/Participant'
 import { AvailableKeys } from '../../models/Keys'
 import { Questions } from '../../models/Questions'
@@ -11,7 +12,7 @@ import { response } from 'express'
 
 //////////////////// GET /api/v1/whaiPiano/:key
 
-export async function getParticipants(): Promise<ParticipantResponse[]> {
+export async function getParticipants(): Promise<Participant[]> {
   const response = await request.get(`api/v1/whaiPiano/`)
   return response.body.participants
 }
