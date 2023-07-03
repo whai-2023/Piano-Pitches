@@ -5,9 +5,8 @@ import {
   ParticipantData,
   NewParticipantResponse,
 } from '../../models/Participant'
-import { AvailableKeys } from '../../models/keys'
-
-import { Questions } from '../../models/questions'
+import { AvailableKeys } from '../../models/Keys'
+import { Questions } from '../../models/Questions'
 
 //////////////////// GET /api/v1/whaiPiano/:key
 

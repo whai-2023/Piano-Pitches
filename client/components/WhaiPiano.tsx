@@ -32,12 +32,9 @@ function WhaiPiano() {
     })
   }
 
-  const {
-    data: participant,
-    isLoading,
-    error,
-  } = useQuery<ParticipantResponse>(['participant', selectedKey], () =>
-    getParticipantByKey(selectedKey as string)
+  const { data: participant, error } = useQuery<ParticipantResponse>(
+    ['participant', selectedKey],
+    () => getParticipantByKey(selectedKey as string)
   )
 
   const [audio] = useState(new Audio())
@@ -62,18 +59,11 @@ function WhaiPiano() {
     )
   }
 
-  if (error) {
-    return <div>There was an error: {(error as Error).message}</div>
-  }
-
-  if (!participant || isLoading) {
-    return <div>Loading...</div>
-  }
-
   return (
     <>
       <div className="media">
         <header className="header">
+          {error && <div>There was an error: {(error as Error).message}</div>}
           <h1>Piano Pitch!!</h1>
           <div>
             <Link to={`/`}>
