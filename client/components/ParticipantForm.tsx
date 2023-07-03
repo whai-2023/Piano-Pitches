@@ -166,6 +166,9 @@ export default function ParticipantForm() {
           name="key"
           required
         >
+          <option value="" disabled selected>
+            Choose a key
+          </option>
           {availableKeysQuery.data?.map((key) => (
             <option key={key.key} value={key.key}>
               {key.key}
