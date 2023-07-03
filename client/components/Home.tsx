@@ -8,7 +8,7 @@ interface Quotes {
 }
 
 function Home() {
-  const { data, isLoading, error } = useQuery<Quotes>(['quote', null], readFile)
+  const { data, isLoading, error } = useQuery<Quotes>(['quote'], readFile)
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -75,7 +75,7 @@ function Home() {
         <br></br>
 
         <h1 className="quotes">Quotes about music:</h1>
-        <p>{String(quote)}</p>
+        <p>{typeof quote === 'string' ? quote : quote.quote}</p>
       </div>
     </>
   )
