@@ -1,6 +1,6 @@
 import connection from './connection'
 import { Participant } from '../../models/Participant'
-import { AvailableKeys } from '../../models/keys'
+import { AvailableKeys } from '../../models/Keys'
 
 export function getAllAvailableKeys(db = connection): Promise<AvailableKeys[]> {
   return db('newParticipants')
