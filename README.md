@@ -1,96 +1,17 @@
-# Fullstack Collection App
+<h3><strong>The Whai Piano</strong></h3>
+<h1>The Choir of the Dev Academy Gods</h1>
+This project has been the product of the love, grit and tears of the Piano Pitches members. These members are: Dillon, Renee, Min, Martin and Dallin. This is truly music to everyone's ears. Beauty is always in the ear of the beholder.
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, API requests and React components that'll use React Query. Let's get going!
+Included in the Whai Piano are the voices of the Whai 2023 cohort. We know this is a fun way to remember our time together and also laugh at each other.
 
-## Setup
+## Using Whai Piano
 
-### 0. Cloning and installation
+Each key in the whai piano contains the voice from a cohort member. Press the key and their voice will play. Information about the individual will also pop up below the piano.
 
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
+## The Playground
 
-    You may also want to start a new branch
-    ```sh
-    cd my-fullstack-collection
-    npm i
-    git checkout -b <branchname>
-    npm run dev
-    ```
-  </details>
+The purpose of the playground is to be a place for non-cohort individuals to add their voices. Thus modelling the idea of inclusion. The instructions for adding yourself as a choir participant are found in the 'Adding a Participant' section.
 
-<details>
-  <summary>More about using <code>npm</code> vs <code>npx</code></summary>
+## Adding a Participant
 
-  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-</details>
-
----
-
-## Requirements
-
-### 1. Choosing your data set
-
-- [ ] First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy, but keep it simple!
-  <details style="padding-left: 2em">
-    <summary>More about your collection</summary>
-
-    **Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
-
-    |id|title|author|
-    |---|---|---|
-    | 1 | Ready Player One | Ernest Cline |
-    | 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
-
-Our first job is getting something showing on the front end from our database. Here's a list of steps in case they are useful. You can build in any order you like though ;)
-
-## Back end
-
-### 2. Building the database
-
-- [ ] Design a database to store a list of your things (e.g. books)
-- [ ] Build the migrations and seed data
-
-### 3. Building the API
-- [ ] Build an API (back end route) to get the information from your database
-- [ ] Test your API with Insomnia
-
-## Front end
-
-### 4. Setting the stage
-- [ ] Build a React component with static html
-
-### 5. Building the API client
-- [ ] Build an API client in the front end to request the information from your routes
-
-### 6. Querying Data 
-- [ ] Write a query with the `useQuery` hook to fetch the collection data from the API
-- [ ] Display the collection data you queried in a component (you may want to create a new component for this)
-
-### 7. Create Data
-- [ ] (Optional) Create a new component for your new collection item form
-- [ ] Mutate data with the `useMutation` hook to create a new collection item via the API 
-
-### 8. Delete Data
-- [ ] Mutate data with the `useMutation` hook to delete an exisiting collection item via the API (you may want to add this to your collection display component)
-
-### 9. Update Data
-- [ ] (Optional) Create a new component for your update collection item form
-- [ ] Mutate data with the `useMutation` hook to update an exisiting collection item via the API 
-
----
-
-## Stretch
-
-<details>
-  <summary>More about stretch challenges</summary>
-  
-  - Forms can be tough to build accessibly. First ensure all parts of your form can be reached and used with keyboard-only navigation. Then test your form page with the WAVE browser extension, and fix any accessibility issues it detects
-  - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
-    - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, and this may require adjusting your database design
-  - Could you add an external API (maybe an inspirational quote in the footer?)
-  - If you haven't already, CSS!
-</details>
-
----
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=my-fullstack-collection-query)
+To add yourself as a participant in the online form you must have two things ready. (1) An image file that will be your avatar and (2) an audio file (.mp3) that contains your voice singing the word 'whai'. In the form you will be asked a random question. An input field is provided so that you can answer this question. All of this information will be stored on a secure database. When a user presses your key on the piano your avatar, question, answer, name and audio will appear.
