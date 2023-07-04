@@ -7,14 +7,26 @@ import {
 } from '../../models/Participant'
 import { AvailableKeys } from '../../models/Keys'
 import { Questions } from '../../models/Questions'
+import { response } from 'express'
 
 //////////////////// GET /api/v1/whaiPiano/:key
+
+export async function getParticipants(): Promise<ParticipantResponse[]> {
+  const response = await request.get(`api/v1/whaiPiano/`)
+  return response.body.participants
+}
 
 export async function getParticipantByKey(
   key: string
 ): Promise<ParticipantResponse> {
   const response = await request.get(`/api/v1/whaiPiano/${key}`)
   return response.body
+}
+
+export async function getParticipantsByKeys(key: string): Promise<any> {
+  const response1 = await request.get(`/api/v1/whaiPiano/${key}`)
+  const response2 = await request.get(`/api/v1/whaiPiano/${key}`)
+  return { response1: response1.body, response2: response2.body }
 }
 
 //////////////////// GET /api/v1/playground/:key
