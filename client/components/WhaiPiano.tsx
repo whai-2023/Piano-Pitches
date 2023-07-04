@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getParticipantByKey } from '../apis/apiClient'
 import { ParticipantResponse } from '../../models/Participant'
+import PianoKey from './PianoKey'
 import getRandomColour from '../lib/utils'
 
 function WhaiPiano() {
@@ -15,11 +16,37 @@ function WhaiPiano() {
   const volumeSlider = useRef<HTMLInputElement>(null)
   const audio = useRef(new Audio())
 
-  //const blackKeys = [2,4,7,9,11]
-  //
-  //
-  //
-  //
+  const keyNames = [
+    'C2',
+    'CW2',
+    'D2',
+    'DW2',
+    'E2',
+    'F2',
+    'FW2',
+    'G2',
+    'GW2',
+    'A2',
+    'AW2',
+    'B2',
+    'C3',
+    'CW3',
+    'D3',
+    'DW3',
+    'E3',
+    'F3',
+    'FW3',
+    'G3',
+    'GW3',
+    'A3',
+    'AW3',
+    'B3',
+    'C4',
+    'CW4',
+    'D4',
+  ]
+
+  const blackKeys = [1, 3, 6, 8, 10]
 
   const { data: participant, error } = useQuery<ParticipantResponse>(
     ['participant', selectedKey],
@@ -115,330 +142,22 @@ function WhaiPiano() {
             </div>
           </header>
           <div className="piano-keys">
-            <button
-              className="key white"
-              data-key="C2"
-              style={
-                pressedKeys.includes('C2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('C2')}
-            >
-              <span>C2</span>
-            </button>
-            <button
-              className="key black"
-              data-key="CW2"
-              style={
-                pressedKeys.includes('CW2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('CW2')}
-            >
-              <span>C#2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="D2"
-              style={
-                pressedKeys.includes('D2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('D2')}
-            >
-              <span>D2</span>
-            </button>
-            <button
-              className="key black"
-              data-key="DW2"
-              style={
-                pressedKeys.includes('DW2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('DW2')}
-            >
-              <span>D#2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="E2"
-              style={
-                pressedKeys.includes('E2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('E2')}
-            >
-              <span>E2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="F2"
-              style={
-                pressedKeys.includes('F2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('F2')}
-            >
-              <span>F2</span>
-            </button>
-            <button
-              className="key black"
-              data-key="FW2"
-              style={
-                pressedKeys.includes('FW2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('FW2')}
-            >
-              <span>F#2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="G2"
-              style={
-                pressedKeys.includes('G2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('G2')}
-            >
-              <span>G2</span>
-            </button>
-            <button
-              className="key black"
-              data-key="GW2"
-              style={
-                pressedKeys.includes('GW2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('GW2')}
-            >
-              <span>G#2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="A2"
-              style={
-                pressedKeys.includes('A2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('A2')}
-            >
-              <span>A2</span>
-            </button>
-            <button
-              className="key black"
-              data-key="AW2"
-              style={
-                pressedKeys.includes('AW2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('AW2')}
-            >
-              <span>A#2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="B2"
-              style={
-                pressedKeys.includes('B2')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('B2')}
-            >
-              <span>B2</span>
-            </button>
-            <button
-              className="key white"
-              data-key="C3"
-              style={
-                pressedKeys.includes('C3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('C3')}
-            >
-              <span>C3</span>
-            </button>
-            <button
-              className="key black"
-              data-key="CW3"
-              style={
-                pressedKeys.includes('CW3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('CW3')}
-            >
-              <span>C#3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="D3"
-              style={
-                pressedKeys.includes('D3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('D3')}
-            >
-              <span>D3</span>
-            </button>
-            <button
-              className="key black"
-              data-key="DW3"
-              style={
-                pressedKeys.includes('DW3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('DW3')}
-            >
-              <span>D#3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="E3"
-              style={
-                pressedKeys.includes('E3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('E3')}
-            >
-              <span>E3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="F3"
-              style={
-                pressedKeys.includes('F3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('F3')}
-            >
-              <span>F3</span>
-            </button>
-            <button
-              className="key black"
-              data-key="FW3"
-              style={
-                pressedKeys.includes('FW3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('FW3')}
-            >
-              <span>F#3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="G3"
-              style={
-                pressedKeys.includes('G3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('G3')}
-            >
-              <span>G3</span>
-            </button>
-            <button
-              className="key black"
-              data-key="GW3"
-              style={
-                pressedKeys.includes('GW3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('GW3')}
-            >
-              <span>G#3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="A3"
-              style={
-                pressedKeys.includes('A3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('A3')}
-            >
-              <span>A3</span>
-            </button>
-            <button
-              className="key black"
-              data-key="AW3"
-              style={
-                pressedKeys.includes('AW3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('AW3')}
-            >
-              <span>A#3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="B3"
-              style={
-                pressedKeys.includes('B3')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('B3')}
-            >
-              <span>B3</span>
-            </button>
-            <button
-              className="key white"
-              data-key="C4"
-              style={
-                pressedKeys.includes('C4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('C4')}
-            >
-              <span>C4</span>
-            </button>
-            <button
-              className="key black"
-              data-key="CW4"
-              style={
-                pressedKeys.includes('CW4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('CW4')}
-            >
-              <span>C#4</span>
-            </button>
-            <button
-              className="key white"
-              data-key="D4"
-              style={
-                pressedKeys.includes('D4')
-                  ? { background: backgroundColour }
-                  : {}
-              }
-              onClick={() => handleKeyClick('D4')}
-            >
-              <span>D4</span>
-            </button>
+            {keyNames.map((keyName, index) => {
+              return (
+                <>
+                  <PianoKey
+                    key={index}
+                    keyName={keyName}
+                    handleKeyClick={handleKeyClick}
+                    pressedKeys={pressedKeys}
+                    backgroundColor={backgroundColour}
+                    keyColor={
+                      blackKeys.includes(index % 12) ? 'black' : 'white'
+                    }
+                  />
+                </>
+              )
+            })}
           </div>
         </div>
       </div>
