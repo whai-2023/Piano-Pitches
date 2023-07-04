@@ -29,7 +29,7 @@ exports.seed = async function (knex) {
       question: 'If animals could talk, which one would be the rudest?',
       answer:
         "\"Pigeons. Imagine a pigeon landing on a park bench and loudly expressing its unsolicited opinions about people's fashion choices or critiquing their picnic spread with their 'coo-coo' attitude.\"",
-      image: '/image/mc.jpg',
+      image: '/image/mc.png',
     },
     {
       id: 4,
