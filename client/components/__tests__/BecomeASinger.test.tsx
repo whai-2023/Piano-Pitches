@@ -2,6 +2,14 @@
 import { describe, expect, it } from 'vitest'
 import { renderRoute, screen } from '../../test/utils'
 
+describe('<ParticipantForm>', () => {
+  it('renders BecomeASinger page', () => {
+    renderRoute('/BecomeASinger')
+
+    expect(screen.getByText(/Piano Pitch - Become A Singer/i)).toBeTruthy()
+  })
+})
+
 describe('<Navigation>', () => {
   it('renders navigation links', async () => {
     renderRoute('/BecomeASinger')
@@ -14,6 +22,8 @@ describe('<Navigation>', () => {
 
     expect(links.map((link) => link.textContent)).toMatchInlineSnapshot(`
       [
+        "Home",
+        "Whai Piano",
         "Home",
         "Whai Piano",
       ]

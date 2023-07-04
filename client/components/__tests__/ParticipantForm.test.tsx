@@ -10,14 +10,6 @@ import {
   within,
 } from '../../test/utils'
 
-describe('<ParticipantForm>', () => {
-  it('renders BecomeASinger page', () => {
-    renderRoute('/BecomeASinger')
-
-    expect(screen.getByText(/Piano Pitch - Become A Singer/i)).toBeTruthy()
-  })
-})
-
 describe('form', () => {
   it.todo('should successfully add a new participant', async () => {
     renderRoute('/BecomeASinger')
