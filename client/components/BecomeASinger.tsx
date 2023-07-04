@@ -16,6 +16,9 @@ function BecomeASinger() {
         </Link>
       </div>
       <ParticipantForm />
+
+      {/* C2 */}
+      {/* C#2 */}
     </>
   )
 }

@@ -1,6 +1,6 @@
-export default async function ReadFile() {
+export default async function readFile() {
   try {
-    const response = await fetch('client/apis/quotes.json')
+    const response = await fetch('/data/quotes.json')
     const data = await response.json()
     const randomIndex = Math.floor(Math.random() * data.length)
     const quote = data[randomIndex].quote
@@ -8,5 +8,6 @@ export default async function ReadFile() {
     return quote
   } catch (err) {
     console.error(err)
+    throw err
   }
 }

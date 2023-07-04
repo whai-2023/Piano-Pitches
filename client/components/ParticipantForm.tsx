@@ -1,19 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import 'notyf/notyf.min.css'
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { ParticipantData } from '../../models/Participant'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query'
 import {
   addParticipant,
   getQuestions,
   uploadImage,
   uploadAudio,
+  getAllAvailableKeys,
 } from '../apis/apiClient'
 import { Notyf } from 'notyf'
 
 const initialFormData = {
   name: '',
   question: '',
+  key: '',
   answer: '',
   audioUrl: '',
   imageUrl: '',
@@ -49,7 +52,11 @@ export default function ParticipantForm() {
     },
   })
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const availableKeysQuery = useQuery(['availableKeys'], getAllAvailableKeys)
+
+  function handleChange(
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
     const { name, value } = event.target
     const newForm = { ...form, [name]: value }
     setForm(newForm)
@@ -70,18 +77,15 @@ export default function ParticipantForm() {
     }
 
     setIsLoading(false)
-    notyf.success(
-      'Form Submitted Successfully. Time to play and find your key!'
-    )
+    notyf.success('Form Submitted Successfully. Time to sing!')
     setTimeout(() => {
       navigate('/Playground')
-    }, 3000)
+    }, 2400)
   }
 
   useEffect(() => {
     async function getFormQuestion() {
       const responseQuestion = await getQuestions()
-      console.log(responseQuestion.question)
       const question = responseQuestion.question
       const newForm = { ...form, question: question }
       setForm(newForm)
@@ -93,12 +97,12 @@ export default function ParticipantForm() {
     return <div>There was an error trying to add your form</div>
   }
 
-  if (addParticipantMutation.isLoading) {
-    return <div>Adding your form</div>
+  if (availableKeysQuery.isError) {
+    return <div>There was an error trying to get your available keys</div>
   }
 
   function validateAudioType(file: File): boolean {
-    const allowedExtensions = ['.mp3', '.wav', '.m4a']
+    const allowedExtensions = ['.mp3', '.wav']
     const fileName = file.name
     const fileExtension = fileName
       .substring(fileName.lastIndexOf('.'))
@@ -153,6 +157,27 @@ export default function ParticipantForm() {
       </div>
 
       <div>
+        <label htmlFor="key">Choose available key:</label>
+        <br />
+        <select
+          id="key"
+          onChange={handleChange}
+          value={form.key}
+          name="key"
+          required
+        >
+          <option value="" disabled selected>
+            Choose a key
+          </option>
+          {availableKeysQuery.data?.map((key) => (
+            <option key={key.key} value={key.key}>
+              {key.key}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
         <label htmlFor="audioUrl">Audio:</label>
         <p>(Please avoid any white space before recording.)</p>
         <br />
@@ -177,7 +202,7 @@ export default function ParticipantForm() {
           />
           {isAudioError && (
             <div style={{ color: 'red' }}>
-              Please select an MP3, M4A, or WAV file for the audio.
+              Please select an MP3 or WAV file for the audio.
             </div>
           )}
         </div>

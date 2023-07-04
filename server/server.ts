@@ -3,17 +3,17 @@ import { join } from 'node:path'
 import express from 'express'
 import path from 'path'
 
-import page2 from './routes/whaiPiano'
-import page3 from './routes/newParticipant'
-import page4 from './routes/playground'
+import whaiPiano from './routes/whaiPiano'
+import newParticipant from './routes/newParticipant'
+import playground from './routes/playground'
 
 const server = express()
 server.use(express.json())
 server.use(express.static(join(__dirname, 'public')))
 
-server.use('/api/v1', page2)
-server.use('/api/v1', page3)
-server.use('/api/v1', page4)
+server.use('/api/v1/whaiPiano', whaiPiano)
+server.use('/api/v1/newParticipant', newParticipant)
+server.use('/api/v1/playground', playground)
 
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static(path.resolve(__dirname, '../assets')))

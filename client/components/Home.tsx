@@ -36,7 +36,6 @@ function Home() {
   }
 
   const quote = data || ''
-  console.log(quote)
 
   return (
     <>
@@ -77,24 +76,25 @@ function Home() {
             {/* <button className="searchSubmit">Playground</button> */}
           </Link>
           <br></br>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
 
-        <h1 className="quotes">Quotes about music:</h1>
-        <p>{String(quote)}</p>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <h1 className="quotes">Quotes about music:</h1>
+          <p>{String(quote)}</p>
+        </div>
         <p className="help"> Click robot for help</p>
       </div>
 

@@ -5,8 +5,8 @@ import {
   ParticipantData,
   NewParticipantResponse,
 } from '../../models/Participant'
-
-import { Questions } from '../../models/questions'
+import { AvailableKeys } from '../../models/Keys'
+import { Questions } from '../../models/Questions'
 
 //////////////////// GET /api/v1/whaiPiano/:key
 
@@ -14,7 +14,6 @@ export async function getParticipantByKey(
   key: string
 ): Promise<ParticipantResponse> {
   const response = await request.get(`/api/v1/whaiPiano/${key}`)
-  console.table(response.body)
   return response.body
 }
 
@@ -24,7 +23,6 @@ export async function getNewParticipantByKey(
   key: string
 ): Promise<NewParticipantResponse> {
   const response = await request.get(`/api/v1/playground/${key}`)
-  console.table(response.body)
   return response.body
 }
 
@@ -33,20 +31,26 @@ export async function getNewParticipantByKey(
 export async function addParticipant(
   newParticipant: ParticipantData
 ): Promise<void> {
-  const response = await request.post('/api/v1/page3').send({ newParticipant })
-  console.log('addParticipant response:', response.body)
+  const response = await request
+    .post('/api/v1/newParticipant')
+    .send({ newParticipant })
   return response.body.newParticipant
 }
 
 export async function getQuestions(): Promise<Questions> {
-  const response = await request.get('/api/v1/page3')
+  const response = await request.get('/api/v1/newParticipant')
   return response.body.question
+}
+
+export async function getAllAvailableKeys(): Promise<AvailableKeys[]> {
+  const response = await request.get('/api/v1/newParticipant/availableKeys')
+  return response.body.key
 }
 
 ///////////////////// CLOUDINARY /////////////////
 
 async function getImageSignature() {
-  const response = await request.get('/api/v1/page3/signature')
+  const response = await request.get('/api/v1/newParticipant/signature')
 
   const { signature, timestamp, cloudName, apiKey } = response.body
   return { signature, timestamp, cloudName, apiKey }
@@ -65,7 +69,6 @@ export async function uploadImage(image: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`)
     .send(formData)
-  console.log('uploadImage response:', response.body)
   const data = response.body
   return data.url
 }
@@ -83,7 +86,6 @@ export async function uploadAudio(audio: File) {
   const response = await request
     .post(`https://api.cloudinary.com/v1_1/${cloudName}/video/upload`)
     .send(formData)
-  console.log('uploadAudio response:', response.body)
   const data = response.body
   return data.url
 }
