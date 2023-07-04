@@ -191,20 +191,7 @@ right:18px;
   margin-right: 1vw;
  
 }
-=======
-  float: right;
-  background-image: url('/image/robot.gif');
-  background-size: cover;
-  background-color: #0b0f26;
-  border: invisible;
-  display: flex;
-  position: fixed;
-  z-index: 0;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 1vh;
-  margin-right: 2vw;
-}
+
 @media screen and (max-width: 600px) {
   .robot {
     width: 20vw;
