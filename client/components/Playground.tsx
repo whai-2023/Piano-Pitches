@@ -111,16 +111,28 @@ function Playground() {
           {error ? (
             <div>There was an error: {(error as Error).message}</div>
           ) : null}
-          <h1>Play your key!</h1>
+          <h1 className="title">Playground!!</h1>
           <div>
             <Link to={`/`}>
-              <button className="searchSubmit">Home</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">Home</span>
+              </button>
             </Link>
             <Link to={`/WhaiPiano`}>
-              <button className="searchSubmit">Whai Piano</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">Whai Piano</span>
+              </button>
             </Link>
             <Link to={`/BecomeASinger`}>
-              <button className="searchSubmit">BecomeASinger</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">Become a Singer</span>
+              </button>
             </Link>
           </div>
         </header>
