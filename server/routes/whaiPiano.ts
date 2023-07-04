@@ -1,8 +1,18 @@
 import express from 'express'
-import { getParticipantByKey } from '../db/participant'
+import { getParticipantByKey, getParticipants } from '../db/participant'
 const router = express.Router()
 
 //server = /api/v1/whaiPiano
+
+router.get('/', async (req, res) => {
+  try {
+    const participants = await getParticipants()
+    res.json({ participants })
+  } catch (error) {
+    console.error('Error fetching participant by key:', error)
+    res.status(500).json({ error: 'Internal server error' })
+  }
+})
 
 router.get('/:key', async (req, res) => {
   try {

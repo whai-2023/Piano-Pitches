@@ -182,6 +182,7 @@ function Playground() {
           <p className="answer">{newParticipant?.newParticipant?.answer}</p>
         </div>
       </div>
+      <img className="robot" src="/image/robot.gif" alt="robot"></img>
     </>
   )
 }
