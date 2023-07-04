@@ -12,13 +12,10 @@ function BecomeASinger() {
           <button className="searchSubmit">Home</button>
         </Link>
         <Link to={`/WhaiPiano`}>
-          <button className="searchSubmit">Back</button>
+          <button className="searchSubmit">Whai Piano</button>
         </Link>
       </div>
       <ParticipantForm />
-
-      {/* C2 */}
-      {/* C#2 */}
     </>
   )
 }

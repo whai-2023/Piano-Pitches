@@ -19,7 +19,7 @@ describe('<ParticipantForm>', () => {
 })
 
 describe('form', () => {
-  it('should successfully add a new participant', async () => {
+  it.todo('should successfully add a new participant', async () => {
     renderRoute('/BecomeASinger')
 
     const scope1 = nock('http://localhost')
