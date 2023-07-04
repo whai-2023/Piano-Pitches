@@ -42,7 +42,6 @@ function Home() {
       <div className="homepage">
         <div className="border">
           <header className="header">
-            <h1 className="title">Piano Pitch!!</h1>
             <h2 className="subtitle">
               Welcome to our Whai 2023 choir. Play our piano to hear our
               beautiful voices.
@@ -76,30 +75,34 @@ function Home() {
             {/* <button className="searchSubmit">Playground</button> */}
           </Link>
           <br></br>
-        </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <h1 className="quotes">Quotes about music:</h1>
-        <p>{String(quote)}</p>
+          <h1>Quotes about music:</h1>
+          <p className="quote1">{String(quote)}</p>
+        </div>
         <p className="help"> Click robot for help</p>
       </div>
-
-      <div></div>
-      <button className="robot" onClick={onClickHelp}></button>
       <p className="advice">{message}</p>
+      <button className="robot" onClick={onClickHelp}></button>
     </>
   )
 }

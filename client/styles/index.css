@@ -66,9 +66,132 @@ body {
         font-size:3vw;
     }
 }
+
+.quote1 {
+  height: 6vh;
+  max-width: 40vw;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  font-size: 1.5vw;
+  background-color: #ffffff;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+size: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 40%;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #170019;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #fefefe;
+}
+
+@media (max-width:768px) {
+    .quote1 {
+        height:5vh;
+        width:70vw;
+        font-size:3vw;
+    }
+}
 .robot {
   width: 10vw;
   height: 16vh;
+
+  float: right;
+  background-image: url('/image/robot.gif');
+  background-size: cover;
+  background-color: #0b0f26;
+  border: invisible;
+  display: flex;
+  position: fixed;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1vh;
+  margin-right: 2vw;
+}
+@media screen and (max-width: 600px) {
+  .robot {
+    width: 20vw;
+    height: 10vh;
+    float: right;
+    margin-bottom:45vh; 
+    margin-right:79vw; 
+    max-width:50%;
+    max-height:50%;
+    }
+}
+@media screen and (min-width:1600px) {
+  .robot {
+    width: 10vw;
+    height: 30vh;
+    float: right;
+    margin-bottom:3vh; 
+    margin-right:3vw; 
+    max-width:100%;
+    max-height:100%;
+  }
+  
+}
+.advice{ float: right;
+  color: hsl(327, 99%, 48%);
+  opacity: 70%;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  margin-bottom: 10vh;
+  margin-right: 10vw;
+font-weight: bold;
+font-size: x-large;
+height: min-content;
+max-width: 36vw;
+width: max-content;
+margin: auto;
+margin-bottom: 5vh;
+margin-right: 15vw;
+display: flex;
+place-items: center;
+font-size: 0.6vw;
+background-color: #ba2b5b;
+transform: translatey(0px);
+animation: float 5s ease-in-out infinite;
+text-align: center;
+text-transform: uppercase;
+opacity: 98%;
+color: #ffffff;
+background-color: #7e0f51e4;
+padding: 25px;
+border-radius: 11px;
+position: relative;
+box-shadow: 10px 10px, #aa05a7;
+border: .5px solid #3a002c;
+bottom:-10px;
+right:18px;
+
+           }
+.help {
+  float: right;
+  color: #ffffff;
+  opacity: 70%;
+  position: relative;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  margin-bottom: 18vh;
+  margin-right: 1vw;
+ 
+}
+=======
   float: right;
   background-image: url('/image/robot.gif');
   background-size: cover;
@@ -157,6 +280,7 @@ right:18px;
   margin-right: 1vw;
  
 }
+
 @media screen and (min-width:1600px) {
   .help {
     width: 10vw;
@@ -205,6 +329,69 @@ right:18px;
   box-shadow: 10px 10px, #aa05a7;
   border: .5px solid #3a002c;
 }
+
+.blockquote-wrapper {
+  display: flex;
+  height: 100vh;
+  padding: 0 20px;
+}
+
+/* Blockquote main style */
+.blockquote {
+   position: relative;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 800;
+   color: #ffffff;
+   padding: 30px 0;
+   width: 100%;
+   max-width: 500px;
+   z-index: 1;
+   margin: 80px auto;
+   align-self: center;
+   border-top: solid 1px;
+   border-bottom: solid 1px;
+}
+
+/* Blockquote header */
+.blockquote h1 {
+   position: relative;
+   color: #FFFFFF;
+   font-size: 40px;
+   font-weight: 800;
+   line-height: 1;
+   margin: 0;
+}
+
+/* Blockquote right double quotes */
+.blockquote:after {
+   position: absolute;
+   content: "”";
+   color: rgba(255, 255, 255, 1);
+   font-size: 10rem;
+   line-height: 0;
+   bottom: -43px;
+   right: 30px;
+}
+
+/* increase header size after 600px */
+@media all and (min-width: 600px) {
+   .blockquote h1 {
+       font-size: 60px;
+  }
+
+}
+
+/* Blockquote subheader */
+.blockquote h4 {
+   position: relative;
+   color: #292a2b;
+   font-size: 1.4rem;
+   font-weight: normal;
+   line-height: 1;
+   margin: 0;
+   padding-top: 20px;
+   z-index: 1;
+}
 .quote2 {
   height: min-content;
   max-width: 36vw;
@@ -238,7 +425,7 @@ right:18px;
   margin-top: 2vh;
 }
 .homepage {
-  background-image: url('/audio/images/pitches.gif'); 
+  background-image: url('/image/pitches.gif'); 
   background-size: contain;
   height:auto;
   float: right;
