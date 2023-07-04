@@ -5,7 +5,7 @@ function BecomeASinger() {
   return (
     <>
       <header className="header">
-        <h1>Piano Pitch Page 3</h1>
+        <h1>Piano Pitch - Become A Singer</h1>
       </header>
       <div>
         <Link to={`/`}>

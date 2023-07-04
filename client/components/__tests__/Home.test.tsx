@@ -5,7 +5,7 @@ import readFile from '../../apis/getRandomQuote'
 
 vi.mock('../../apis/getRandomQuote')
 
-describe('Navigation', () => {
+describe('<Navigation>', () => {
   it('renders navigation links', async () => {
     vi.mocked(readFile).mockResolvedValue({
       quote:
