@@ -2,9 +2,9 @@ import express from 'express'
 import { getNewParticipantByKey } from '../db/playground'
 const router = express.Router()
 
-//server = /api/v1
+//server = /api/v1/playground
 
-router.get('/playground/:key', async (req, res) => {
+router.get('/:key', async (req, res) => {
   try {
     const key = req.params.key
     const newParticipant = await getNewParticipantByKey(key)

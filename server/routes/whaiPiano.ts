@@ -2,9 +2,9 @@ import express from 'express'
 import { getParticipantByKey } from '../db/participant'
 const router = express.Router()
 
-//server = /api/v1
+//server = /api/v1/whaiPiano
 
-router.get('/whaiPiano/:key', async (req, res) => {
+router.get('/:key', async (req, res) => {
   try {
     const key = req.params.key
     const participant = await getParticipantByKey(key)

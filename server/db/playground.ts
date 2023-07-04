@@ -14,7 +14,6 @@ export function getNewParticipantByKey(key: string, db = connection) {
     .where('key', '=', key)
     .select()
     .then((newParticipants) => {
-      console.log(`Participiant with key: (${key}):`, newParticipants)
       return newParticipants[0]
     })
     .catch((error) => {
