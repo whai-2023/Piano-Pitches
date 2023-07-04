@@ -1,54 +1,45 @@
-import {
-  QueryClient,
-  QueryClientConfig,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { createMemoryRouter, RouterProvider } from 'react-router-dom'
-
+import { beforeEach, expect } from 'vitest'
+import { cleanup, render } from '@testing-library/react'
+import matchers, {
+  TestingLibraryMatchers,
+} from '@testing-library/jest-dom/matchers'
+import { RouterProvider, createMemoryRouter } from 'react-router-dom'
 import { routes } from '../router'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-export const testQueryClientConfig: QueryClientConfig = {
-  defaultOptions: {
-    queries: {
-      retry: false,
-    },
-  },
-  logger: {
-    log: console.log,
-    warn: console.warn,
-    error: () => {},
-  },
+beforeEach(cleanup)
+expect.extend(matchers)
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace jest {
+    // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-unused-vars
+    interface Matchers<R = void, T = {}>
+      extends TestingLibraryMatchers<typeof expect.stringContaining, R> {}
+  }
 }
 
-/**
- * Use this function to render a route in a test. This function will create a
- * memory router, query client, and user object for you.
- *
- * @example renderRoute('/')
- * @param location initial location to render
- */
-function renderRoute(location: string) {
+export function renderRoute(location: string) {
   const router = createMemoryRouter(routes, {
     initialEntries: [location],
   })
 
-  const queryClient = new QueryClient(testQueryClientConfig)
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+    logger: {
+      log: console.log,
+      warn: console.warn,
+      error: () => {},
+    },
+  })
 
-  const container = render(
+  render(
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>
   )
-
-  const user = userEvent.setup()
-
-  return {
-    ...container,
-    user,
-  }
 }
-
-export * from '@testing-library/react'
-export { renderRoute }

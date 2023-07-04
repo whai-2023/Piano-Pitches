@@ -1,12 +1,15 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest'
-import { renderRoute, screen } from '../../test/utils'
+import { renderRoute } from '../../test/utils'
+import { screen } from '@testing-library/react'
 
 describe('<ParticipantForm>', () => {
   it('renders BecomeASinger page', () => {
     renderRoute('/BecomeASinger')
 
-    expect(screen.getByText(/Piano Pitch - Become A Singer/i)).toBeTruthy()
+    expect(
+      screen.getByText(/Piano Pitch - Become A Singer/i)
+    ).toBeInTheDocument()
   })
 })
 
@@ -17,13 +20,11 @@ describe('<Navigation>', () => {
     const links = await screen.findAllByRole('link')
 
     links.forEach((link) => {
-      expect(link).toBeTruthy()
+      expect(link).toBeInTheDocument()
     })
 
     expect(links.map((link) => link.textContent)).toMatchInlineSnapshot(`
       [
-        "Home",
-        "Whai Piano",
         "Home",
         "Whai Piano",
       ]

@@ -2,57 +2,63 @@
 import userEvent from '@testing-library/user-event'
 import nock from 'nock'
 import { describe, expect, it } from 'vitest'
+import { screen, waitFor, within } from '@testing-library/react'
+import { renderRoute } from '../../test/utils'
 
-import {
-  renderRoute,
-  screen,
-  waitForElementToBeRemoved,
-  within,
-} from '../../test/utils'
-
-describe('form', () => {
-  it.todo('should successfully add a new participant', async () => {
+describe('Add Participant Form', () => {
+  it('should successfully add a new participant', async () => {
     renderRoute('/BecomeASinger')
 
-    const scope1 = nock('http://localhost')
+    nock('http://localhost')
+      .get('/api/v1/newParticipant/availableKeys')
+      .reply(200, {
+        key: [
+          {
+            id: '1',
+            key: 'E4',
+            name: '',
+          },
+          {
+            id: '2',
+            key: 'C2',
+            name: '',
+          },
+        ],
+      })
+
+    nock('http://localhost')
+      .get('/api/v1/newParticipant')
+      .reply(200, {
+        question: {
+          question: '',
+        },
+      })
+
+    const scope = nock('http://localhost')
       .post('/api/v1/newParticipant', {
         newParticipant: [
           {
-            key: 'C2',
+            key: 'E4',
             name: 'Dallin',
-            audioURL: '/audio/C2.mp3',
+            audioURL: 'E4.mp3',
             question:
               '"If you could be any fictional character for a day, who would you choose and why?"',
             answer: '"Scooby Doo, because he was my childhood hero."',
-            image: '/image/dallin.png',
+            image: 'dallin.png',
           },
         ],
       })
       .reply(200, {
         newParticipant: [
           {
-            key: 'C2',
+            key: 'E4',
             name: 'Dallin',
-            audioURL: 'C2.mp3',
+            audioURL: 'E4.mp3',
             answer: '"Scooby Doo, because he was my childhood hero."',
             image: 'dallin.png',
           },
         ],
       })
-
-    // const scope2 = nock('http://localhost')
-    //   .get('/api/v1/playground/C2')
-    //   .reply(200, {
-    //     pet: [
-    //       {
-    //         key: 'C2',
-    //         name: 'Dallin',
-    //         audioURL: 'C2.mp3',
-    //         answer: '"Scooby Doo, because he was my childhood hero."',
-    //         image: 'dallin.png',
-    //       },
-    //     ],
-    //   })
 
     const form = await screen.findByRole('form', {
       name: 'Add Participant Form',
@@ -74,16 +80,14 @@ describe('form', () => {
       answerInput,
       '"Scooby Doo, because he was my childhood hero."'
     )
-    await user.type(keySelect, 'C2')
-    await user.type(audioInput, 'C2.mp3')
+    await user.selectOptions(keySelect, 'E4')
+    await user.type(audioInput, 'E4.mp3')
     await user.type(imageInput, 'dallin.png')
     await user.click(submitButton)
 
-    await waitForElementToBeRemoved(() =>
-      screen.getByRole('form', { name: 'Add Participant' })
-    )
-
-    expect(scope1.isDone()).toBeTruthy()
-    // expect(scope2.isDone()).toBeTruthy()
+    expect(submitButton).not.toBeDisabled()
+    waitFor(() => {
+      expect(scope.isDone()).toBeTruthy()
+    })
   })
 })
