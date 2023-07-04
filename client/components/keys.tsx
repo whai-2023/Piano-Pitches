@@ -9,8 +9,10 @@ export const keys = [
   'G2',
   'GW2',
   'A2',
+  'AW2',
   'B2',
   'C3',
+  'CW3',
   'D3',
   'DW3',
   'E3',
@@ -22,12 +24,8 @@ export const keys = [
   'AW3',
   'B3',
   'C4',
+  'CW4',
   'D4',
-  'DW4',
-  'E4',
-  'F4',
-  'FW4',
-  'G4',
 ]
 
 // let n = 3;
