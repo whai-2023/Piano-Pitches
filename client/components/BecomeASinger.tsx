@@ -5,20 +5,17 @@ function BecomeASinger() {
   return (
     <>
       <header className="header">
-        <h1>Piano Pitch Page 3</h1>
+        <h1>Piano Pitch - Become A Singer</h1>
       </header>
       <div>
         <Link to={`/`}>
           <button className="searchSubmit">Home</button>
         </Link>
         <Link to={`/WhaiPiano`}>
-          <button className="searchSubmit">Back</button>
+          <button className="searchSubmit">Whai Piano</button>
         </Link>
       </div>
       <ParticipantForm />
-
-      {/* C2 */}
-      {/* C#2 */}
     </>
   )
 }
