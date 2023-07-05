@@ -1,19 +1,18 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import {
-  getParticipantByKey,
-  getParticipantsByKeys,
-  getParticipants,
-} from '../apis/apiClient'
-import { ParticipantResponse, Participant } from '../../models/Participant'
+import { getParticipants } from '../apis/apiClient'
+import { Participant } from '../../models/Participant'
 import PianoKey from './PianoKey'
 import getRandomColour from '../lib/utils'
-import { keys } from './keys'
+import { keys } from './Keys'
 
 function WhaiPiano() {
   const [message, setMessage] = useState('')
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
+  const [selectedParticipants, setSelectedParticipants] = useState<
+    Participant[] | null
+  >(null)
   const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState('white')
   const [pressedKeys, setPressedKeys] = useState<string[]>([])
@@ -72,6 +71,7 @@ function WhaiPiano() {
         slider.removeEventListener('input', eventListener)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   async function onClickHelp() {
     const messages = [
@@ -107,11 +107,6 @@ function WhaiPiano() {
   const [audio2] = useState(new Audio())
   const blackKeys = [1, 3, 6, 8, 10]
 
-  // if (selectedKey !== null) {
-  //   const selectedKeyIndex = keys.indexOf(selectedKey)
-  //   const selectedKey1 = keys[selectedKeyIndex - 1]
-  //   const selectedKey2 = keys[selectedKeyIndex + 1]
-
   const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(event.target.value)
     setVolume(newVolume)
@@ -129,10 +124,13 @@ function WhaiPiano() {
         audio.src = participant1?.audioURL
         audio.play()
         console.log('playing white key')
+
+        setSelectedParticipants([participant1 as Participant])
       } else {
         const selectedKeyIndex = keys.indexOf(selectedKey)
         const selectedKey1 = keys[selectedKeyIndex - 1]
         const selectedKey2 = keys[selectedKeyIndex + 1]
+
         const participantLeft = participants?.find((participant) => {
           return participant.key === selectedKey1
         })
@@ -144,6 +142,11 @@ function WhaiPiano() {
 
         audio2.src = participantRight?.audioURL as string
         audio2.play()
+
+        setSelectedParticipants([
+          participantLeft as Participant,
+          participantRight as Participant,
+        ])
       }
     }
   }, [participants, audio, audio2, selectedKey, participant1])
@@ -173,7 +176,25 @@ function WhaiPiano() {
           <header>
             <h2>PIANO PITCHES!!</h2>
             <div>
-              <span className="digitalName">{participant1?.name}</span>
+              {selectedParticipants?.map((participant, index) => {
+                if (index == selectedParticipants.length - 1) {
+                  return (
+                    <>
+                      <span key={index} className="digitalName">
+                        {participant.name}
+                      </span>
+                    </>
+                  )
+                } else {
+                  return (
+                    <>
+                      <span key={index} className="digitalName">
+                        {participant.name}
+                      </span>{' '}
+                    </>
+                  )
+                }
+              })}
             </div>
             <div className="column volume-slider">
               <label htmlFor="volume-slider">Volume</label>
@@ -210,19 +231,24 @@ function WhaiPiano() {
         </div>
       </div>
       <br></br>
+
       <div className="bottomHalf">
         {imageVisible && (
           <>
-            <div className="quote">
-              <div className="qAndA">
-                <span className="question">{participant1?.question}</span>
-              </div>
-              <br></br>
-              <div className="quote2">
-                <p className="answer">{participant1?.answer}</p>
-              </div>
-            </div>
-          </>
+           {selectedParticipants?.length == 1 && (
+            <>
+              <div className="bottomHalf">
+
+                <div className="quote">
+                  <div className="qAndA">
+                    <span className="question">{participant1?.question}</span>
+                  </div>
+                  <br></br>
+                  <div className="quote2">
+                    <p className="answer">{participant1?.answer}</p>
+                  </div>
+                </div>
+              </>
         )}
       </div>
 
@@ -239,6 +265,23 @@ function WhaiPiano() {
           )}
         </div>
       </div>
+
+          </div>
+
+          <div className="image">
+            <div className="fp1">
+              {imageVisible && (
+                <img
+                  className="fp"
+                  src={participant1?.image}
+                  alt="participant logo depending on key"
+                />
+              )}
+            </div>
+          </div>
+        </>
+      )}
+      <img className="robot" src="/image/robot.gif" alt="robot"></img>
     </>
   )
 }
