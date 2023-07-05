@@ -165,7 +165,6 @@ export default function ParticipantForm() {
           value={form.key || 'Choose a key'}
           name="key"
           required
-          // defaultValue={'placeholder'}
         >
           <option value={'Choose a key'} disabled>
             Choose a key
