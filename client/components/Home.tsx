@@ -24,7 +24,7 @@ function Home() {
       'Join the playground to customize the community piano! -',
       'Remember to only upload mp3 sound files! -',
       'Play Piano will take you to our example piano -',
-      'You can add you own image when uploading new audio -',
+      'You can add your own image when uploading new audio -',
       'HAVE FUN -',
       'Be creative with it ;) -',
     ]
@@ -53,7 +53,7 @@ function Home() {
             <button className="button-82-pushable">
               <span className="button-82-shadow"></span>
               <span className="button-82-edge"></span>
-              <span className="button-82-front text">Play Piano</span>
+              <span className="button-82-front text">PLAY PIANO</span>
             </button>
 
             {/* <button className="searchSubmit">Press Piano Key</button> */}
@@ -62,7 +62,7 @@ function Home() {
             <button className="button-82-pushable">
               <span className="button-82-shadow"></span>
               <span className="button-82-edge"></span>
-              <span className="button-82-front text">Become A Singer</span>
+              <span className="button-82-front text">BECOME A SINGER</span>
             </button>
             {/* <button className="searchSubmit">Become A Singer</button> */}
           </Link>
@@ -70,7 +70,7 @@ function Home() {
             <button className="button-82-pushable">
               <span className="button-82-shadow"></span>
               <span className="button-82-edge"></span>
-              <span className="button-82-front text">Playground</span>
+              <span className="button-82-front text">PLAYGROUND</span>
             </button>
             {/* <button className="searchSubmit">Playground</button> */}
           </Link>
