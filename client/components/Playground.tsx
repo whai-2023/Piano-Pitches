@@ -8,6 +8,7 @@ import PianoKey from './PianoKey'
 import getRandomColour from '../lib/utils'
 
 function Playground() {
+  const [message, setMessage] = useState('')
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [volume, setVolume] = useState(0.5)
   const [backgroundColour, setBackgroundColour] = useState<string>('white')
@@ -104,6 +105,22 @@ function Playground() {
     })
   }
 
+  async function onClickHelp() {
+    const messages = [
+      'La LA lala LALA! -',
+      'Weow beautiful voices!! -',
+      'My name is Piano Roboto! -',
+      'Bit out of tune there... -',
+      'I will teach you how to sing like me -',
+      'Be creative with it ;) -',
+      'MEOW -',
+    ]
+    const randomIndex = Math.floor(Math.random() * messages.length)
+    const randomMessage = messages[randomIndex]
+
+    setMessage(randomMessage)
+  }
+
   return (
     <>
       <div className="media">
@@ -194,9 +211,11 @@ function Playground() {
           <p className="answer">{newParticipant?.newParticipant?.answer}</p>
         </div>
       </div>
-      <img className="robot" src="/image/robot.gif" alt="robot"></img>
+      <button className="robot" onClick={onClickHelp}>
+        i am not empty
+      </button>
+      {message != '' && <p className="advicePiano">{message}</p>}
     </>
   )
 }
-
 export default Playground

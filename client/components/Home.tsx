@@ -97,7 +97,7 @@ function Home() {
         </div>
         <p className="help"> Click robot for help</p>
       </div>
-      <p className="advice">{message}</p>
+      {message != '' && <p className="advicePiano">{message}</p>}
       <button className="robot" onClick={onClickHelp}></button>
     </>
   )

@@ -23,6 +23,7 @@ const initialFormData = {
 }
 
 export default function ParticipantForm() {
+  const [message, setMessage] = useState('')
   const [form, setForm] = useState<ParticipantData>(initialFormData)
   const queryClient = useQueryClient()
   const [imageSelected, setImageSelected] = useState<File | null>(null)
@@ -119,130 +120,154 @@ export default function ParticipantForm() {
     return allowedExtensions.includes(fileExtension)
   }
 
+  async function onClickHelp() {
+    const messages = [
+      'La LA lala LALA! -',
+      'Weow beautiful voices!! -',
+      'My name is Piano Roboto! -',
+      'Bit out of tune there... -',
+      'I will teach you how to sing like me -',
+      'Be creative with it ;) -',
+      'MEOW -',
+    ]
+    const randomIndex = Math.floor(Math.random() * messages.length)
+    const randomMessage = messages[randomIndex]
+
+    setMessage(randomMessage)
+  }
+
   return (
-    <form onSubmit={handleSubmit} aria-label="Add Participant Form">
-      <div>
-        <label htmlFor="name">Name:</label>
-        <br />
-        <input
-          id="name"
-          onChange={handleChange}
-          value={form.name}
-          name="name"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="question">{form.question}</label>
-        <br />
-        <input
-          id="question"
-          type="hidden"
-          value={form.question}
-          name="question"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="answer">Answer:</label>
-        <br />
-        <input
-          id="answer"
-          onChange={handleChange}
-          value={form.answer}
-          name="answer"
-          required
-        />
-      </div>
-
-      <div>
-        <label htmlFor="key">Choose available key:</label>
-        <br />
-        <select
-          id="key"
-          onChange={handleChange}
-          value={form.key || 'Choose a key'}
-          name="key"
-          required
-        >
-          <option value={'Choose a key'} disabled>
-            Choose a key
-          </option>
-          {availableKeysQuery.data?.map((key) => {
-            return (
-              <option key={key.key} value={key.key}>
-                {key.key}
-              </option>
-            )
-          })}
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="audioUrl">Audio:</label>
-        <p>(Please avoid any white space at the beginning of recording.)</p>
-        <br />
-        <div className="file-upload-button">
+    <>
+      <form onSubmit={handleSubmit} aria-label="Add Participant Form">
+        <div>
+          <label htmlFor="name">Name:</label>
+          <br />
           <input
-            type="file"
-            id="audioUrl"
-            name="audioUrl"
-            onChange={(event) => {
-              const files = event.target.files
-              if (files && files.length > 0) {
-                const selectedFile = files[0]
-                if (validateAudioType(selectedFile)) {
-                  setAudioSelected(selectedFile)
-                  setIsAudioError(false)
-                } else {
-                  setIsAudioError(true)
-                }
-              }
-            }}
+            id="name"
+            onChange={handleChange}
+            value={form.name}
+            name="name"
             required
           />
-          {isAudioError && (
-            <div style={{ color: 'red' }}>
-              Please select an MP3 or WAV file for the audio.
-            </div>
-          )}
         </div>
-      </div>
 
-      <div>
-        <label htmlFor="imageUrl">Image:</label>
-        <br />
-        <div className="file-upload-button">
+        <div>
+          <label htmlFor="question">{form.question}</label>
+          <br />
           <input
-            type="file"
-            id="imageUrl"
-            name="imageUrl"
-            onChange={(event) => {
-              const files = event.target.files
-              if (files && files.length > 0) {
-                const selectedFile = files[0]
-                if (validateImageType(selectedFile)) {
-                  setImageSelected(selectedFile)
-                  setIsImageError(false)
-                } else {
-                  setIsImageError(true)
-                }
-              }
-            }}
+            id="question"
+            type="hidden"
+            value={form.question}
+            name="question"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="answer">Answer:</label>
+          <br />
+          <input
+            id="answer"
+            onChange={handleChange}
+            value={form.answer}
+            name="answer"
             required
           />
-          {isImageError && (
-            <div style={{ color: 'red' }}>
-              Please select a PNG, JPEG, GIF, or BMP image file.
-            </div>
-          )}
         </div>
-        <img className="robot" src="/image/robot.gif" alt="robot"></img>
-      </div>
 
-      <button disabled={isAudioError || isImageError}>Add Participant</button>
-      {isLoading && <div>Submitting...</div>}
-    </form>
+        <div>
+          <label htmlFor="key">Choose available key:</label>
+          <br />
+          <select
+            id="key"
+            onChange={handleChange}
+            value={form.key || 'Choose a key'}
+            name="key"
+            required
+          >
+            <option value={'Choose a key'} disabled>
+              Choose a key
+            </option>
+            {availableKeysQuery.data?.map((key) => {
+              return (
+                <option key={key.key} value={key.key}>
+                  {key.key}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="audioUrl">Audio:</label>
+          <p>(Please avoid any white space at the beginning of recording.)</p>
+          <br />
+          <div className="file-upload-button">
+            <input
+              type="file"
+              id="audioUrl"
+              name="audioUrl"
+              onChange={(event) => {
+                const files = event.target.files
+                if (files && files.length > 0) {
+                  const selectedFile = files[0]
+                  if (validateAudioType(selectedFile)) {
+                    setAudioSelected(selectedFile)
+                    setIsAudioError(false)
+                  } else {
+                    setIsAudioError(true)
+                  }
+                }
+              }}
+              required
+            />
+            {isAudioError && (
+              <div style={{ color: 'red' }}>
+                Please select an MP3 or WAV file for the audio.
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="imageUrl">Image:</label>
+          <br />
+          <div className="file-upload-button">
+            <input
+              type="file"
+              id="imageUrl"
+              name="imageUrl"
+              onChange={(event) => {
+                const files = event.target.files
+                if (files && files.length > 0) {
+                  const selectedFile = files[0]
+                  if (validateImageType(selectedFile)) {
+                    setImageSelected(selectedFile)
+                    setIsImageError(false)
+                  } else {
+                    setIsImageError(true)
+                  }
+                }
+              }}
+              required
+            />
+            {isImageError && (
+              <div style={{ color: 'red' }}>
+                Please select a PNG, JPEG, GIF, or BMP image file.
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="newParticipantButton">
+          <button disabled={isAudioError || isImageError}>
+            Add Participant
+          </button>
+          {isLoading && <div>Submitting...</div>}
+        </div>
+      </form>
+      <button className="robot" onClick={onClickHelp}>
+        i am not empty
+      </button>
+      {message != '' && <p className="advicePiano">{message}</p>}
+    </>
   )
 }

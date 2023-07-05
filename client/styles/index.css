@@ -640,6 +640,10 @@ header input {
   width: 900px;
 }
 
+.newParticipantButton {
+  margin-top: 20px;
+}
+
 .media {
   margin-top: 4vh;
   max-width: 98vw;

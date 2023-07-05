@@ -43,6 +43,7 @@ function WhaiPiano() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   async function onClickHelp() {
     const messages = [
       'La LA lala LALA! -',
@@ -245,8 +246,10 @@ function WhaiPiano() {
         )}
       </div>
 
-      <button className="robot" onClick={onClickHelp}></button>
-      <p className="advicePiano">{message}</p>
+      <button className="robot" onClick={onClickHelp}>
+        i am not empty
+      </button>
+      {message != '' && <p className="advicePiano">{message}</p>}
     </>
   )
 }
