@@ -17,6 +17,9 @@ server.use('/api/v1/playground', playground)
 
 if (process.env.NODE_ENV === 'production') {
   server.use('/assets', express.static(path.resolve(__dirname, '../assets')))
+  server.use('/audio', express.static(path.resolve(__dirname, '../audio')))
+  server.use('/data', express.static(path.resolve(__dirname, '../data')))
+  server.use('/image', express.static(path.resolve(__dirname, '../image')))
   server.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../index.html'))
   })
