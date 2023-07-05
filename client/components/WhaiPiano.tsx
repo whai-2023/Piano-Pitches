@@ -235,10 +235,8 @@ function WhaiPiano() {
       <div className="bottomHalf">
         {imageVisible && (
           <>
-           {selectedParticipants?.length == 1 && (
-            <>
+            {selectedParticipants?.length == 1 && (
               <div className="bottomHalf">
-
                 <div className="quote">
                   <div className="qAndA">
                     <span className="question">{participant1?.question}</span>
@@ -248,7 +246,9 @@ function WhaiPiano() {
                     <p className="answer">{participant1?.answer}</p>
                   </div>
                 </div>
-              </>
+              </div>
+            )}
+          </>
         )}
       </div>
 
@@ -265,23 +265,17 @@ function WhaiPiano() {
           )}
         </div>
       </div>
-
-          </div>
-
-          <div className="image">
-            <div className="fp1">
-              {imageVisible && (
-                <img
-                  className="fp"
-                  src={participant1?.image}
-                  alt="participant logo depending on key"
-                />
-              )}
-            </div>
-          </div>
-        </>
-      )}
-      <img className="robot" src="/image/robot.gif" alt="robot"></img>
+      <div className="image">
+        <div className="fp1">
+          {imageVisible && (
+            <img
+              className="fp"
+              src={participant1?.image}
+              alt="participant logo depending on key"
+            />
+          )}
+        </div>
+      </div>
     </>
   )
 }
