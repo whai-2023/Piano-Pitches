@@ -162,18 +162,21 @@ export default function ParticipantForm() {
         <select
           id="key"
           onChange={handleChange}
-          value={form.key}
+          value={form.key || 'Choose a key'}
           name="key"
           required
+          // defaultValue={'placeholder'}
         >
-          <option value="" disabled selected>
+          <option value={'Choose a key'} disabled>
             Choose a key
           </option>
-          {availableKeysQuery.data?.map((key) => (
-            <option key={key.key} value={key.key}>
-              {key.key}
-            </option>
-          ))}
+          {availableKeysQuery.data?.map((key) => {
+            return (
+              <option key={key.key} value={key.key}>
+                {key.key}
+              </option>
+            )
+          })}
         </select>
       </div>
 
@@ -236,6 +239,7 @@ export default function ParticipantForm() {
             </div>
           )}
         </div>
+        <img className="robot" src="/image/robot.gif" alt="robot"></img>
       </div>
 
       <button disabled={isAudioError || isImageError}>Add Participant</button>
