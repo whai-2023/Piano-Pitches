@@ -8,6 +8,7 @@ import getRandomColour from '../lib/utils'
 import { keys } from './Keys'
 
 function WhaiPiano() {
+  const [message, setMessage] = useState('')
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
   const [selectedParticipants, setSelectedParticipants] = useState<
     Participant[] | null
@@ -18,6 +19,36 @@ function WhaiPiano() {
   const [imageVisible, setImageVisible] = useState(false)
 
   const volumeSlider = useRef<HTMLInputElement>(null)
+
+  const keyNames = [
+    'C2',
+    'CW2',
+    'D2',
+    'DW2',
+    'E2',
+    'F2',
+    'FW2',
+    'G2',
+    'GW2',
+    'A2',
+    'AW2',
+    'B2',
+    'C3',
+    'CW3',
+    'D3',
+    'DW3',
+    'E3',
+    'F3',
+    'FW3',
+    'G3',
+    'GW3',
+    'A3',
+    'AW3',
+    'B3',
+    'C4',
+    'CW4',
+    'D4',
+  ]
 
   const { data: participants, error } = useQuery<Participant[]>(
     ['participants'],
@@ -42,6 +73,22 @@ function WhaiPiano() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  async function onClickHelp() {
+    const messages = [
+      'La LA lala LALA! -',
+      'Weow beautiful voices!! -',
+      'My name is Piano Roboto! -',
+      'Bit out of tune there... -',
+      'I will teach you how to sing like me -',
+      'Be creative with it ;) -',
+      'MEOW -',
+    ]
+
+    const randomIndex = Math.floor(Math.random() * messages.length)
+    const randomMessage = messages[randomIndex]
+
+    setMessage(randomMessage)
+  }
 
   function handleKeyClick(key: string) {
     setSelectedKey(key)
@@ -184,18 +231,41 @@ function WhaiPiano() {
         </div>
       </div>
       <br></br>
-      {selectedParticipants?.length == 1 && (
-        <>
-          <div className="bottomHalf">
-            <div className="quote">
-              <div className="qAndA">
-                <span className="question">{participant1?.question}</span>
-              </div>
-              <br></br>
-              <div className="quote2">
-                <p className="answer">{participant1?.answer}</p>
-              </div>
-            </div>
+
+      <div className="bottomHalf">
+        {imageVisible && (
+          <>
+           {selectedParticipants?.length == 1 && (
+            <>
+              <div className="bottomHalf">
+
+                <div className="quote">
+                  <div className="qAndA">
+                    <span className="question">{participant1?.question}</span>
+                  </div>
+                  <br></br>
+                  <div className="quote2">
+                    <p className="answer">{participant1?.answer}</p>
+                  </div>
+                </div>
+              </>
+        )}
+      </div>
+
+      <button className="robot" onClick={onClickHelp}></button>
+      <p className="advicePiano">{message}</p>
+      <div className="image">
+        <div className="fp1">
+          {imageVisible && (
+            <img
+              className="fp"
+              src={participant1?.image}
+              alt="participant logo depending on key"
+            />
+          )}
+        </div>
+      </div>
+
           </div>
 
           <div className="image">
