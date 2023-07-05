@@ -1,15 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import {
-  getParticipantByKey,
-  getParticipantsByKeys,
-  getParticipants,
-} from '../apis/apiClient'
-import { ParticipantResponse, Participant } from '../../models/Participant'
+import { getParticipants } from '../apis/apiClient'
+import { Participant } from '../../models/Participant'
 import PianoKey from './PianoKey'
 import getRandomColour from '../lib/utils'
-import { keys } from './keys'
+import { keys } from './Keys'
 
 function WhaiPiano() {
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
@@ -44,6 +40,7 @@ function WhaiPiano() {
         slider.removeEventListener('input', eventListener)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleKeyClick(key: string) {
@@ -62,11 +59,6 @@ function WhaiPiano() {
   const [audio] = useState(new Audio())
   const [audio2] = useState(new Audio())
   const blackKeys = [1, 3, 6, 8, 10]
-
-  // if (selectedKey !== null) {
-  //   const selectedKeyIndex = keys.indexOf(selectedKey)
-  //   const selectedKey1 = keys[selectedKeyIndex - 1]
-  //   const selectedKey2 = keys[selectedKeyIndex + 1]
 
   const handleVolume = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(event.target.value)
