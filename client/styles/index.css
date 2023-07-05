@@ -640,9 +640,22 @@ header input {
   width: 900px;
 }
 
-.newParticipantButton {
-  margin-top: 20px;
+label {
+  font-family: 'Montserrat', sans-serif;
 }
+
+p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.add-participant {
+  font-size: 17.5px;
+}
+
 
 .media {
   margin-top: 4vh;

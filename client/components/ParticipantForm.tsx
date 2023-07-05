@@ -150,9 +150,9 @@ export default function ParticipantForm() {
             required
           />
         </div>
-
+        <br />
         <div>
-          <label htmlFor="question">{form.question}</label>
+          <label htmlFor="question">Question: {form.question}</label>
           <br />
           <input
             id="question"
@@ -161,7 +161,7 @@ export default function ParticipantForm() {
             name="question"
           />
         </div>
-
+        <br />
         <div>
           <label htmlFor="answer">Answer:</label>
           <br />
@@ -173,7 +173,7 @@ export default function ParticipantForm() {
             required
           />
         </div>
-
+        <br />
         <div>
           <label htmlFor="key">Choose available key:</label>
           <br />
@@ -196,11 +196,10 @@ export default function ParticipantForm() {
             })}
           </select>
         </div>
-
+        <br />
         <div>
           <label htmlFor="audioUrl">Audio:</label>
           <p>(Please avoid any white space at the beginning of recording.)</p>
-          <br />
           <div className="file-upload-button">
             <input
               type="file"
@@ -227,7 +226,7 @@ export default function ParticipantForm() {
             )}
           </div>
         </div>
-
+        <br />
         <div>
           <label htmlFor="imageUrl">Image:</label>
           <br />
@@ -257,8 +256,13 @@ export default function ParticipantForm() {
             )}
           </div>
         </div>
-        <div className="newParticipantButton">
-          <button disabled={isAudioError || isImageError}>
+        <br />
+        <br />
+        <div>
+          <button
+            className="add-participant"
+            disabled={isAudioError || isImageError}
+          >
             Add Participant
           </button>
           {isLoading && <div>Submitting...</div>}

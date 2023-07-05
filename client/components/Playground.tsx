@@ -121,6 +121,7 @@ function Playground() {
     setMessage(randomMessage)
   }
 
+  console.log(newParticipant)
   return (
     <>
       <div className="media">
@@ -195,22 +196,26 @@ function Playground() {
           </div>
         </div>
       </div>
-      <div className="bottomHalf">
-        <div className="image">
-          {imageVisible && (
-            <img
-              src={newParticipant?.newParticipant?.imageUrl}
-              alt="newParticipant logo depending on key"
-            />
-          )}
+
+      {newParticipant?.newParticipant?.name != '' && (
+        <div className="bottomHalf">
+          <div className="image">
+            {imageVisible && (
+              <img
+                src={newParticipant?.newParticipant?.imageUrl}
+                alt="newParticipant logo depending on key"
+              />
+            )}
+          </div>
+          <div className="qAndA">
+            <span className="question">
+              {newParticipant?.newParticipant?.question}
+            </span>
+            <p className="answer">{newParticipant?.newParticipant?.answer}</p>
+          </div>
         </div>
-        <div className="qAndA">
-          <span className="question">
-            {newParticipant?.newParticipant?.question}
-          </span>
-          <p className="answer">{newParticipant?.newParticipant?.answer}</p>
-        </div>
-      </div>
+      )}
+
       <button className="robot" onClick={onClickHelp}>
         i am not empty
       </button>
