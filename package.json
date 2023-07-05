@@ -39,7 +39,8 @@
     "react-query": "^3.39.3",
     "react-responsive": "^9.0.2",
     "sqlite3": "^5.1.2",
-    "superagent": "7.1.1"
+    "superagent": "7.1.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
@@ -78,7 +79,6 @@
     "sass": "^1.62.1",
     "supertest": "^6.2.2",
     "tailwind-merge": "^1.13.2",
-    "ts-node": "^10.9.1",
     "typescript": "~4.8.4",
     "vite": "^4.3.5",
     "vitest": "^0.31.0"
