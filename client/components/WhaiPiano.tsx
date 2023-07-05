@@ -128,23 +128,35 @@ function WhaiPiano() {
           {error ? (
             <div>There was an error: {(error as Error).message}</div>
           ) : null}
-          <h1>Piano Pitch!!</h1>
+          <h1 className="title">PLAY PIANO!!</h1>
           <div>
             <Link to={`/`}>
-              <button className="searchSubmit">Home</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">HOME</span>
+              </button>
             </Link>
             <Link to={`/BecomeASinger`}>
-              <button className="searchSubmit">Become A Singer</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">BECOME A SINGER</span>
+              </button>
             </Link>
             <Link to={`/Playground`}>
-              <button className="searchSubmit">Playground</button>
+              <button className="button-82-pushable">
+                <span className="button-82-shadow"></span>
+                <span className="button-82-edge"></span>
+                <span className="button-82-front text">PLAYGROUND</span>
+              </button>
             </Link>
           </div>
         </header>
 
         <div className="wrapper">
           <header>
-            <h2>PIANO PITCHES!!</h2>
+            <h2>Whai 2023</h2>
             <div>
               {selectedParticipants?.map((participant, index) => {
                 if (index == selectedParticipants.length - 1) {
