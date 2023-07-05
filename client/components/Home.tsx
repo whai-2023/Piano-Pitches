@@ -55,8 +55,6 @@ function Home() {
               <span className="button-82-edge"></span>
               <span className="button-82-front text">PLAY PIANO</span>
             </button>
-
-            {/* <button className="searchSubmit">Press Piano Key</button> */}
           </Link>
           <Link to={`/BecomeASinger`}>
             <button className="button-82-pushable">
@@ -64,7 +62,6 @@ function Home() {
               <span className="button-82-edge"></span>
               <span className="button-82-front text">BECOME A SINGER</span>
             </button>
-            {/* <button className="searchSubmit">Become A Singer</button> */}
           </Link>
           <Link to={`/Playground`}>
             <button className="button-82-pushable">
@@ -72,7 +69,6 @@ function Home() {
               <span className="button-82-edge"></span>
               <span className="button-82-front text">PLAYGROUND</span>
             </button>
-            {/* <button className="searchSubmit">Playground</button> */}
           </Link>
           <br></br>
           <br></br>

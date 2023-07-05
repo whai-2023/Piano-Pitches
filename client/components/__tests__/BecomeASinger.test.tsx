@@ -1,7 +1,18 @@
 // @vitest-environment jsdom
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, beforeEach } from 'vitest'
 import { renderRoute } from '../../test/utils'
 import { screen } from '@testing-library/react'
+import nock from 'nock'
+
+beforeEach(async () => {
+  nock('http://localhost')
+    .get('/api/v1/newParticipant')
+    .reply(200, {
+      question: {
+        question: '',
+      },
+    })
+})
 
 describe('<ParticipantForm>', () => {
   it('renders BecomeASinger page', () => {

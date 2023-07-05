@@ -130,30 +130,60 @@ body {
 }
 
 .quote {
-  height: 3vh;
-  max-width: 70vw;
+
   width: max-content;
+  height: max-content;
   margin: auto;
   display: grid;
   place-items: center;
-  font-size: 1.5vw;
+  font-size: 0.3vw;
   background-color: #7c6384;
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
   text-align: center;
-
-  text-align: center;
   text-transform: uppercase;
   opacity: 80%;
   font-weight: bold;
-  font-size: 1vw;
   color: #feeeff;
   background-color: #422f3e;
   padding: 25px;
   border-radius: 11px;
   position: relative;
   box-shadow: 10px 10px, #aa05a7;
+
   border: 0.5px solid #3a002c;
+}
+
+@media (max-width:768px) {
+    .quote {
+        height:5vh;
+        width:70vw;
+        font-size:3vw;
+    }
+}
+
+.quote1 {
+  max-width: max-content;
+  width: max-content;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  font-size: 1vw;
+  background-color: #ffffff;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 40%;
+  font-weight: bold;
+  font-size: 1vw;
+  color: #170019;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 10px 10px, #aa05a7;
+  border: .5px solid #fefefe;
 }
 
 @media (max-width: 768px) {
@@ -166,7 +196,6 @@ body {
 .robot {
   width: 10vw;
   height: 16vh;
-
   float: right;
   background-image: url('/image/robot.gif');
   background-size: cover;
@@ -178,7 +207,7 @@ body {
   right: 0;
   bottom: 0;
   margin-bottom: 1vh;
-  margin-right: 2vw;
+  margin-right: 3vw;
 }
 @media screen and (max-width: 600px) {
   .robot {
@@ -193,7 +222,7 @@ body {
 }
 @media screen and (min-width: 1600px) {
   .robot {
-    width: 10vw;
+    width: 13vw;
     height: 30vh;
     float: right;
     margin-bottom: 3vh;
@@ -274,8 +303,12 @@ body {
     max-height: 100%;
   }
 }
+
 .advice {
   float: right;
+}  
+
+.advicePiano{ float: right;
   color: hsl(327, 99%, 48%);
   opacity: 70%;
   position: relative;
@@ -377,12 +410,13 @@ body {
   border: 0.5px solid #3a002c;
 }
 .quote2 {
-  height: min-content;
-  max-width: 36vw;
+  height: max-content;
+  max-width: 60vw;
   width: max-content;
-
+  width: auto;
   margin: auto;
   margin-right: 30vw;
+  margin-left: 4vw;
   display: grid;
   place-items: center;
   font-size: 1.5vw;
@@ -406,8 +440,9 @@ body {
 .fp {
   width: 10vw;
   size: 10%;
-  margin-top: 2vh;
+  margin-top: 0vh;
 }
+
 .homepage {
   background-image: url('/image/pitches.gif');
   background-size: contain;
@@ -424,18 +459,17 @@ body {
 }
 
 .quote {
-  height: 3vh;
-  max-width: 70vw;
+  max-height: 7vh;
+  max-width: 80vw;
   width: max-content;
   margin: auto;
   display: grid;
   place-items: center;
-  font-size: 1.5vw;
+  font-size: 1vw;
   background-color: #7c6384;
   transform: translatey(0px);
   animation: float 5s ease-in-out infinite;
   text-align: center;
-
   text-align: center;
   text-transform: uppercase;
   opacity: 80%;

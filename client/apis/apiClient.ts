@@ -8,7 +8,6 @@ import {
 } from '../../models/Participant'
 import { AvailableKeys } from '../../models/Keys'
 import { Questions } from '../../models/Questions'
-import { response } from 'express'
 
 //////////////////// GET /api/v1/whaiPiano/:key
 
@@ -24,6 +23,7 @@ export async function getParticipantByKey(
   return response.body
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getParticipantsByKeys(key: string): Promise<any> {
   const response1 = await request.get(`/api/v1/whaiPiano/${key}`)
   const response2 = await request.get(`/api/v1/whaiPiano/${key}`)
